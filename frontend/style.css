@@ -1,0 +1,16 @@
+body {
+	margin: 0;
+	height: 100%;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+}
+
+#img-usa {
+	position: absolute;
+}
+
+#canvas {
+	position: absolute;
+}

@@ -1,0 +1,18 @@
+[
+	{
+		"code": "12Y",
+		"name": "Lehigh Valley International",
+		"lat": 1,
+		"long": 2,
+		"city": "Allentown/Bethlehem/Easton, PA",
+		"state": "PA"
+	},
+	{
+		"code": "34X",
+		"name": "Abilene Regional",
+		"lat": 3,
+		"long": 4,
+		"city": "Abilene, TX",
+		"state": "TX"
+	}
+]

@@ -1,0 +1,18 @@
+# IDEs
+.idea
+.vscode
+.vs
+
+# Project
+personal/
+tmp/
+
+# JavaScript
+node_modules
+
+# Python
+.pyc
+
+# OS
+Thumbs.db
+.DS_Store

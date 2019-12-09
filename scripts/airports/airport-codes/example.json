@@ -1,0 +1,74 @@
+[
+	{
+		"code": "ABE",
+		"name": "Lehigh Valley International",
+		"lat": 40.65272222,
+		"long": -75.440000002,
+		"city": "Allentown/Bethlehem/Easton, PA",
+		"state": "PA"
+	},
+	{
+		"code": "ABI",
+		"name": "Abilene Regional",
+		"lat": 32.41064814666667,
+		"long": -99.68111111,
+		"city": "Abilene, TX",
+		"state": "TX"
+	},
+	{
+		"code": "ABQ",
+		"name": "Albuquerque International Sunport",
+		"lat": 35.040000002,
+		"long": -106.608277778,
+		"city": "Albuquerque, NM",
+		"state": "NM"
+	},
+	{
+		"code": "ABR",
+		"name": "Aberdeen Regional",
+		"lat": 45.44828703833334,
+		"long": -98.42217592499999,
+		"city": "Aberdeen, SD",
+		"state": "SD"
+	},
+	{
+		"code": "ABY",
+		"name": "Southwest Georgia Regional",
+		"lat": 31.53388889,
+		"long": -84.195277775,
+		"city": "Albany, GA",
+		"state": "GA"
+	},
+	{
+		"code": "ACK",
+		"name": "Nantucket Memorial",
+		"lat": 41.253777782,
+		"long": -70.06005555600001,
+		"city": "Nantucket, MA",
+		"state": "MA"
+	},
+	{
+		"code": "ACT",
+		"name": "Waco Regional",
+		"lat": 31.611805555,
+		"long": -97.229444445,
+		"city": "Waco, TX",
+		"state": "TX"
+	},
+	{
+		"code": "ACV",
+		"name": "Arcata | California Redwood Coast Humboldt County",
+		"lat": 40.978101855,
+		"long": -124.10828703499999,
+		"city": "Arcata/Eureka, CA",
+		"state": "CA"
+	},
+	{
+		"code": "ACY",
+		"name": "Nafec Atlantic City | Nafec Atl | Atlantic City International",
+		"lat": 39.456944445000005,
+		"long": -74.57777778,
+		"city": "Atlantic City, NJ",
+		"state": "NJ"
+	}
+]
