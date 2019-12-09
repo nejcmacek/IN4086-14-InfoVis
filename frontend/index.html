@@ -1,13 +1,21 @@
 <html>
+
 <head>
 	<title>InfoVis Project</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style/style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="module" src="src/app.js"></script>
 </head>
+
 <body>
-	<img class="adaptive-size" id="img-usa" src="usa-map.svg" alt="Map of USA">
-	<canvas class="adaptive-size" id="canvas"></canvas>
-	<script src="airports.js"></script>
-	<script src="point-align.js"></script>
+	<div class="holder adaptive-size-holder">
+		<img class="adaptive-size" id="img-usa" src="media/usa-map.svg" alt="Map of USA">
+	</div>
+	<div class="holder">
+		<div class="holder adaptive-size-holder">
+			<canvas class="adaptive-size" id="airport-map" resize-listener="airport-map">
+		</div>
+	</div>
 </body>
+
 </html>
