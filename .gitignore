@@ -4,8 +4,9 @@
 .vs
 
 # Project
-personal/
+backend/flight_data/
 tmp/
+personal/
 
 # JavaScript
 node_modules
