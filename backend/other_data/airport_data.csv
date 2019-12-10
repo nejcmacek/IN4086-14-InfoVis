@@ -1,360 +1,360 @@
-airport,runways,notes
-ABE,2,
-ABI,3,
-ABQ,4,
-ABR,2,
-ABY,2,
-ACK,3,
-ACT,2,
-ACV,2,
-ACY,2,
-ADK,2,
-ADQ,3,
-AEX,2,
-AGS,2,
-ALB,2,
-ALO,3,
-ALW,3,
-AMA,2,
-ANC,3,
-APN,2,
-ART,2,
-ASE,1,
-ATL,5,
-ATW,2,
-AUS,2,
-AVL,1,
-AVP,2,
-AZA,3,
-AZO,3,
-BDL,3,
-BET,3,
-BFF,2,
-BFL,2,
-BGM,2,
-BGR,1,
-BHM,2,
-BIL,3,
-BIS,2,
-BJI,2,
-BLI,1,
-BLV,2,
-BMI,3,
-BNA,4,
-BOI,3,
-BOS,6,
-BPT,2,
-BQK,1,
-BQN,1,NOTE: PUERTO RICO
-BRD,4,
-BRO,3,
-BRW,1,
-BTM,3,
-BTR,3,
-BTV,2,
-BUF,2,
-BUR,2,
-BWI,4,
-BZN,3,
-CAE,2,
-CAK,3,
-CDC,2,
-CDV,2,
-CGI,2,
-CHA,2,
-CHO,1,
-CHS,2,
-CID,2,
-CIU,2,
-CKB,1,
-CLE,4,
-CLL,3,
-CLT,4,
-CMH,2,
-CMI,4,
-CMX,2,
-CNY,1,
-COD,1,
-COS,3,
-COU,2,
-CPR,4,
-CRP,2,
-CRW,2,
-CSG,2,
-CVG,4,
-CWA,2,
-DAB,3,
-DAL,3,
-DAY,3,
-DBQ,2,
-DCA,3,
-DEN,6,
-DFW,7,
-DHN,2,
-DIK,2,
-DLH,2,
-DRO,1,
-DSM,2,
-DTW,6,
-DUT,1,
-DVL,2,
-EAT,2,
-EAU,2,
-ECP,1,
-EGE,2,
-EKO,2,
-ELM,3,
-ELP,3,
-ERI,2,
-ESC,2,
-EUG,3,
-EVV,3,
-EWN,2,
-EWR,3,
-EYW,1,
-FAI,4,
-FAR,3,
-FAT,2,
-FAY,2,
-FCA,3,
-FLG,1,
-FLL,3,
-FLO,2,
-FNT,2,
-FSD,3,
-FSM,2,
-FWA,3,
-GCC,2,
-GCK,2,
-GEG,2,
-GFK,4,
-GGG,2,
-GJT,2,
-GNV,2,
-GPT,3,
-GRB,3,
-GRI,2,
-GRK,1,
-GRR,3,
-GSO,3,
-GSP,1,
-GTF,3,
-GTR,1,
-GUC,2,
-GUM,2,NOTE: GUAM
-HDN,1,
-HGR,2,
-HHH,1,
-HIB,2,
-HLN,3,
-HNL,6,
-HOB,3,
-HOU,4,
-HPN,2,
-HRL,3,
-HSV,2,
-HTS,2,
-HVN,2,
-HYA,2,
-HYS,2,
-IAD,4,
-IAG,3,
-IAH,5,
-ICT,3,
-IDA,2,
-ILM,2,
-IMT,2,
-IND,3,
-INL,2,
-IPT,2,
-ISN,2,
-ISP,4,
-ITH,2,
-ITO,2,
-JAC,1,
-JAN,2,
-JAX,2,
-JFK,4,
-JHM,1,
-JLN,3,
-JMS,2,
-JNU,2,
-KOA,1,
-KTN,2,
-LAN,3,
-LAR,2,
-LAS,4,
-LAW,1,
-LAX,5,
-LBB,3,
-LBE,2,
-LBF,2,
-LBL,2,
-LCH,2,
-LCK,3,
-LEX,1,
-LFT,3,
-LGA,2,
-LGB,5,
-LIH,2,
-LIT,3,
-LNK,3,
-LNY,1,
-LRD,3,
-LSE,3,
-LWB,1,
-LWS,2,
-LYH,2,
-MAF,4,
-MBS,2,
-MCI,3,
-MCO,4,
-MDT,1,
-MDW,5,
-MEI,2,
-MEM,4,
-MFE,2,
-MFR,2,
-MGM,2,
-MHK,2,
-MHT,2,
-MIA,4,
-MKE,5,
-MKG,2,
-MKK,2,
-MLB,3,
-MLI,3,
-MLU,3,
-MMH,1,
-MOB,2,
-MOT,2,
-MQT,1,
-MRY,2,
-MSN,3,
-MSO,2,
-MSP,4,
-MSY,3,
-MTJ,2,
-MVY,3,
-MYR,1,
-OAJ,1,
-OAK,4,
-OGD,3,
-OGG,2,
-OGS,1,
-OKC,4,
-OMA,3,
-OME,2,
-ONT,2,
-ORD,9,
-ORF,2,
-ORH,2,
-OTH,2,
-OTZ,2,
-OWB,2,
-PAH,2,
-PBG,1,
-PBI,3,
-PDX,3,
-PGD,3,
-PGV,3,
-PHF,2,
-PHL,4,
-PHX,3,
-PIA,2,
-PIB,1,
-PIE,4,
-PIH,2,
-PIT,4,
-PLN,2,
-PNS,2,
-PPG,2,NOTE: AMERICAN SAMOA
-PSC,3,
-PSE,1,NOTE: PUERTO RICO
-PSG,1,
-PSM,1,
-PSP,2,
-PUB,4,
-PUW,1,
-PVD,2,
-PVU,2,
-PWM,2,
-RAP,2,
-RDD,2,
-RDM,2,
-RDU,3,
-RFD,3,
-RHI,3,
-RIC,3,
-RKS,2,
-RNO,3,
-ROA,2,
-ROC,3,
-ROP,1,NOTE: MARIANA ISLANDS
-ROW,3,
-RST,2,
-RSW,1,
-SAF,3,
-SAN,1,
-SAT,3,
-SAV,2,
-SBA,3,
-SBN,3,
-SBP,2,
-SBY,2,
-SCC,1,
-SCE,1,
-SCK,2,
-SDF,3,
-SEA,4,
-SFB,4,
-SFO,4,
-SGF,2,
-SGU,1,
-SHD,1,
-SHV,2,
-SIT,1,
-SJC,3,
-SJT,3,
-SJU,2,NOTE: PUERTO RICO
-SLC,4,
-SLN,4,
-SMF,2,
-SMX,2,
-SNA,2,
-SPI,3,
-SPN,1,NOTE: MARIANA ISLANDS
-SPS,4,
-SRQ,2,
-STC,2,
-STL,4,
-STS,2,
-STT,1,NOTE: U.S. VIRGIN ISLANDS
-STX,1,NOTE: U.S. VIRGIN ISLANDS
-SUN,1,
-SUX,2,
-SWF,2,
-SWO,3,
-SYR,3,
-TLH,2,
-TOL,2,
-TPA,3,
-TRI,2,
-TTN,2,
-TUL,3,
-TUS,3,
-TVC,3,
-TWF,2,
-TXK,2,
-TYR,3,
-TYS,2,
-UIN,3,
-USA,1,
-VLD,3,
-VPS,2,
-WRG,1,
-WYS,1,
-XNA,1,
-YAK,2,
-YKM,2,
-YUM,4,
+airport,runways,city_name
+ABE,2,"Allentown/Bethlehem/Easton, PA"
+ABI,3,"Abilene, TX"
+ABQ,4,"Albuquerque, NM"
+ABR,2,"Aberdeen, SD"
+ABY,2,"Albany, GA"
+ACK,3,"Nantucket, MA"
+ACT,2,"Waco, TX"
+ACV,2,"Arcata/Eureka, CA"
+ACY,2,"Atlantic City, NJ"
+ADK,2,"Adak Island, AK"
+ADQ,3,"Kodiak, AK"
+AEX,2,"Alexandria, LA"
+AGS,2,"Augusta, GA"
+ALB,2,"Albany, NY"
+ALO,3,"Waterloo, IA"
+ALW,3,"Walla Walla, WA"
+AMA,2,"Amarillo, TX"
+ANC,3,"Anchorage, AK"
+APN,2,"Alpena, MI"
+ART,2,"Watertown, NY"
+ASE,1,"Aspen, CO"
+ATL,5,"Atlanta, GA"
+ATW,2,"Appleton, WI"
+AUS,2,"Austin, TX"
+AVL,1,"Asheville, NC"
+AVP,2,"Scranton/Wilkes-Barre, PA"
+AZA,3,"Phoenix, AZ"
+AZO,3,"Kalamazoo, MI"
+BDL,3,"Hartford, CT"
+BET,3,"Bethel, AK"
+BFF,2,"Scottsbluff, NE"
+BFL,2,"Bakersfield, CA"
+BGM,2,"Binghamton, NY"
+BGR,1,"Bangor, ME"
+BHM,2,"Birmingham, AL"
+BIL,3,"Billings, MT"
+BIS,2,"Bismarck/Mandan, ND"
+BJI,2,"Bemidji, MN"
+BLI,1,"Bellingham, WA"
+BLV,2,"Belleville, IL"
+BMI,3,"Bloomington/Normal, IL"
+BNA,4,"Nashville, TN"
+BOI,3,"Boise, ID"
+BOS,6,"Boston, MA"
+BPT,2,"Beaumont/Port Arthur, TX"
+BQK,1,"Brunswick, GA"
+BQN,1,"Aguadilla, PR"
+BRD,4,"Brainerd, MN"
+BRO,3,"Brownsville, TX"
+BRW,1,"Barrow, AK"
+BTM,3,"Butte, MT"
+BTR,3,"Baton Rouge, LA"
+BTV,2,"Burlington, VT"
+BUF,2,"Buffalo, NY"
+BUR,2,"Burbank, CA"
+BWI,4,"Baltimore, MD"
+BZN,3,"Bozeman, MT"
+CAE,2,"Columbia, SC"
+CAK,3,"Akron, OH"
+CDC,2,"Cedar City, UT"
+CDV,2,"Cordova, AK"
+CGI,2,"Cape Girardeau, MO"
+CHA,2,"Chattanooga, TN"
+CHO,1,"Charlottesville, VA"
+CHS,2,"Charleston, SC"
+CID,2,"Cedar Rapids/Iowa City, IA"
+CIU,2,"Sault Ste. Marie, MI"
+CKB,1,"Clarksburg/Fairmont, WV"
+CLE,4,"Cleveland, OH"
+CLL,3,"College Station/Bryan, TX"
+CLT,4,"Charlotte, NC"
+CMH,2,"Columbus, OH"
+CMI,4,"Champaign/Urbana, IL"
+CMX,2,"Hancock/Houghton, MI"
+CNY,1,"Moab, UT"
+COD,1,"Cody, WY"
+COS,3,"Colorado Springs, CO"
+COU,2,"Columbia, MO"
+CPR,4,"Casper, WY"
+CRP,2,"Corpus Christi, TX"
+CRW,2,"Charleston/Dunbar, WV"
+CSG,2,"Columbus, GA"
+CVG,4,"Cincinnati, OH"
+CWA,2,"Mosinee, WI"
+DAB,3,"Daytona Beach, FL"
+DAL,3,"Dallas, TX"
+DAY,3,"Dayton, OH"
+DBQ,2,"Dubuque, IA"
+DCA,3,"Washington, DC"
+DEN,6,"Denver, CO"
+DFW,7,"Dallas/Fort Worth, TX"
+DHN,2,"Dothan, AL"
+DIK,2,"Dickinson, ND"
+DLH,2,"Duluth, MN"
+DRO,1,"Durango, CO"
+DSM,2,"Des Moines, IA"
+DTW,6,"Detroit, MI"
+DUT,1,"Unalaska, AK"
+DVL,2,"Devils Lake, ND"
+EAT,2,"Wenatchee, WA"
+EAU,2,"Eau Claire, WI"
+ECP,1,"Panama City, FL"
+EGE,2,"Eagle, CO"
+EKO,2,"Elko, NV"
+ELM,3,"Elmira/Corning, NY"
+ELP,3,"El Paso, TX"
+ERI,2,"Erie, PA"
+ESC,2,"Escanaba, MI"
+EUG,3,"Eugene, OR"
+EVV,3,"Evansville, IN"
+EWN,2,"New Bern/Morehead/Beaufort, NC"
+EWR,3,"Newark, NJ"
+EYW,1,"Key West, FL"
+FAI,4,"Fairbanks, AK"
+FAR,3,"Fargo, ND"
+FAT,2,"Fresno, CA"
+FAY,2,"Fayetteville, NC"
+FCA,3,"Kalispell, MT"
+FLG,1,"Flagstaff, AZ"
+FLL,3,"Fort Lauderdale, FL"
+FLO,2,"Florence, SC"
+FNT,2,"Flint, MI"
+FSD,3,"Sioux Falls, SD"
+FSM,2,"Fort Smith, AR"
+FWA,3,"Fort Wayne, IN"
+GCC,2,"Gillette, WY"
+GCK,2,"Garden City, KS"
+GEG,2,"Spokane, WA"
+GFK,4,"Grand Forks, ND"
+GGG,2,"Longview, TX"
+GJT,2,"Grand Junction, CO"
+GNV,2,"Gainesville, FL"
+GPT,3,"Gulfport/Biloxi, MS"
+GRB,3,"Green Bay, WI"
+GRI,2,"Grand Island, NE"
+GRK,1,"Killeen, TX"
+GRR,3,"Grand Rapids, MI"
+GSO,3,"Greensboro/High Point, NC"
+GSP,1,"Greer, SC"
+GTF,3,"Great Falls, MT"
+GTR,1,"Columbus, MS"
+GUC,2,"Gunnison, CO"
+GUM,2,"Guam, TT"
+HDN,1,"Hayden, CO"
+HGR,2,"Hagerstown, MD"
+HHH,1,"Hilton Head, SC"
+HIB,2,"Hibbing, MN"
+HLN,3,"Helena, MT"
+HNL,6,"Honolulu, HI"
+HOB,3,"Hobbs, NM"
+HOU,4,"Houston, TX"
+HPN,2,"White Plains, NY"
+HRL,3,"Harlingen/San Benito, TX"
+HSV,2,"Huntsville, AL"
+HTS,2,"Ashland, WV"
+HVN,2,"New Haven, CT"
+HYA,2,"Hyannis, MA"
+HYS,2,"Hays, KS"
+IAD,4,"Washington, DC"
+IAG,3,"Niagara Falls, NY"
+IAH,5,"Houston, TX"
+ICT,3,"Wichita, KS"
+IDA,2,"Idaho Falls, ID"
+ILM,2,"Wilmington, NC"
+IMT,2,"Iron Mountain/Kingsfd, MI"
+IND,3,"Indianapolis, IN"
+INL,2,"International Falls, MN"
+IPT,2,"Williamsport, PA"
+ISN,2,"Williston, ND"
+ISP,4,"Islip, NY"
+ITH,2,"Ithaca/Cortland, NY"
+ITO,2,"Hilo, HI"
+JAC,1,"Jackson, WY"
+JAN,2,"Jackson/Vicksburg, MS"
+JAX,2,"Jacksonville, FL"
+JFK,4,"New York, NY"
+JHM,1,"Kapalua, HI"
+JLN,3,"Joplin, MO"
+JMS,2,"Jamestown, ND"
+JNU,2,"Juneau, AK"
+KOA,1,"Kona, HI"
+KTN,2,"Ketchikan, AK"
+LAN,3,"Lansing, MI"
+LAR,2,"Laramie, WY"
+LAS,4,"Las Vegas, NV"
+LAW,1,"Lawton/Fort Sill, OK"
+LAX,5,"Los Angeles, CA"
+LBB,3,"Lubbock, TX"
+LBE,2,"Latrobe, PA"
+LBF,2,"North Platte, NE"
+LBL,2,"Liberal, KS"
+LCH,2,"Lake Charles, LA"
+LCK,3,"Columbus, OH"
+LEX,1,"Lexington, KY"
+LFT,3,"Lafayette, LA"
+LGA,2,"New York, NY"
+LGB,5,"Long Beach, CA"
+LIH,2,"Lihue, HI"
+LIT,3,"Little Rock, AR"
+LNK,3,"Lincoln, NE"
+LNY,1,"Lanai, HI"
+LRD,3,"Laredo, TX"
+LSE,3,"La Crosse, WI"
+LWB,1,"Lewisburg, WV"
+LWS,2,"Lewiston, ID"
+LYH,2,"Lynchburg, VA"
+MAF,4,"Midland/Odessa, TX"
+MBS,2,"Saginaw/Bay City/Midland, MI"
+MCI,3,"Kansas City, MO"
+MCO,4,"Orlando, FL"
+MDT,1,"Harrisburg, PA"
+MDW,5,"Chicago, IL"
+MEI,2,"Meridian, MS"
+MEM,4,"Memphis, TN"
+MFE,2,"Mission/McAllen/Edinburg, TX"
+MFR,2,"Medford, OR"
+MGM,2,"Montgomery, AL"
+MHK,2,"Manhattan/Ft. Riley, KS"
+MHT,2,"Manchester, NH"
+MIA,4,"Miami, FL"
+MKE,5,"Milwaukee, WI"
+MKG,2,"Muskegon, MI"
+MKK,2,"Hoolehua, HI"
+MLB,3,"Melbourne, FL"
+MLI,3,"Moline, IL"
+MLU,3,"Monroe, LA"
+MMH,1,"Mammoth Lakes, CA"
+MOB,2,"Mobile, AL"
+MOT,2,"Minot, ND"
+MQT,1,"Marquette, MI"
+MRY,2,"Monterey, CA"
+MSN,3,"Madison, WI"
+MSO,2,"Missoula, MT"
+MSP,4,"Minneapolis, MN"
+MSY,3,"New Orleans, LA"
+MTJ,2,"Montrose/Delta, CO"
+MVY,3,"Martha's Vineyard, MA"
+MYR,1,"Myrtle Beach, SC"
+OAJ,1,"Jacksonville/Camp Lejeune, NC"
+OAK,4,"Oakland, CA"
+OGD,3,"Ogden, UT"
+OGG,2,"Kahului, HI"
+OGS,1,"Ogdensburg, NY"
+OKC,4,"Oklahoma City, OK"
+OMA,3,"Omaha, NE"
+OME,2,"Nome, AK"
+ONT,2,"Ontario, CA"
+ORD,9,"Chicago, IL"
+ORF,2,"Norfolk, VA"
+ORH,2,"Worcester, MA"
+OTH,2,"North Bend/Coos Bay, OR"
+OTZ,2,"Kotzebue, AK"
+OWB,2,"Owensboro, KY"
+PAH,2,"Paducah, KY"
+PBG,1,"Plattsburgh, NY"
+PBI,3,"West Palm Beach/Palm Beach, FL"
+PDX,3,"Portland, OR"
+PGD,3,"Punta Gorda, FL"
+PGV,3,"Greenville, NC"
+PHF,2,"Newport News/Williamsburg, VA"
+PHL,4,"Philadelphia, PA"
+PHX,3,"Phoenix, AZ"
+PIA,2,"Peoria, IL"
+PIB,1,"Hattiesburg/Laurel, MS"
+PIE,4,"St. Petersburg, FL"
+PIH,2,"Pocatello, ID"
+PIT,4,"Pittsburgh, PA"
+PLN,2,"Pellston, MI"
+PNS,2,"Pensacola, FL"
+PPG,2,"Pago Pago, TT"
+PSC,3,"Pasco/Kennewick/Richland, WA"
+PSE,1,"Ponce, PR"
+PSG,1,"Petersburg, AK"
+PSM,1,"Portsmouth, NH"
+PSP,2,"Palm Springs, CA"
+PUB,4,"Pueblo, CO"
+PUW,1,"Pullman, WA"
+PVD,2,"Providence, RI"
+PVU,2,"Provo, UT"
+PWM,2,"Portland, ME"
+RAP,2,"Rapid City, SD"
+RDD,2,"Redding, CA"
+RDM,2,"Bend/Redmond, OR"
+RDU,3,"Raleigh/Durham, NC"
+RFD,3,"Rockford, IL"
+RHI,3,"Rhinelander, WI"
+RIC,3,"Richmond, VA"
+RKS,2,"Rock Springs, WY"
+RNO,3,"Reno, NV"
+ROA,2,"Roanoke, VA"
+ROC,3,"Rochester, NY"
+ROP,1,"Rota, TT"
+ROW,3,"Roswell, NM"
+RST,2,"Rochester, MN"
+RSW,1,"Fort Myers, FL"
+SAF,3,"Santa Fe, NM"
+SAN,1,"San Diego, CA"
+SAT,3,"San Antonio, TX"
+SAV,2,"Savannah, GA"
+SBA,3,"Santa Barbara, CA"
+SBN,3,"South Bend, IN"
+SBP,2,"San Luis Obispo, CA"
+SBY,2,"Salisbury, MD"
+SCC,1,"Deadhorse, AK"
+SCE,1,"State College, PA"
+SCK,2,"Stockton, CA"
+SDF,3,"Louisville, KY"
+SEA,4,"Seattle, WA"
+SFB,4,"Sanford, FL"
+SFO,4,"San Francisco, CA"
+SGF,2,"Springfield, MO"
+SGU,1,"St. George, UT"
+SHD,1,"Staunton, VA"
+SHV,2,"Shreveport, LA"
+SIT,1,"Sitka, AK"
+SJC,3,"San Jose, CA"
+SJT,3,"San Angelo, TX"
+SJU,2,"San Juan, PR"
+SLC,4,"Salt Lake City, UT"
+SLN,4,"Salina, KS"
+SMF,2,"Sacramento, CA"
+SMX,2,"Santa Maria, CA"
+SNA,2,"Santa Ana, CA"
+SPI,3,"Springfield, IL"
+SPN,1,"Saipan, TT"
+SPS,4,"Wichita Falls, TX"
+SRQ,2,"Sarasota/Bradenton, FL"
+STC,2,"St. Cloud, MN"
+STL,4,"St. Louis, MO"
+STS,2,"Santa Rosa, CA"
+STT,1,"Charlotte Amalie, VI"
+STX,1,"Christiansted, VI"
+SUN,1,"Sun Valley/Hailey/Ketchum, ID"
+SUX,2,"Sioux City, IA"
+SWF,2,"Newburgh/Poughkeepsie, NY"
+SWO,3,"Stillwater, OK"
+SYR,3,"Syracuse, NY"
+TLH,2,"Tallahassee, FL"
+TOL,2,"Toledo, OH"
+TPA,3,"Tampa, FL"
+TRI,2,"Bristol/Johnson City/Kingsport, TN"
+TTN,2,"Trenton, NJ"
+TUL,3,"Tulsa, OK"
+TUS,3,"Tucson, AZ"
+TVC,3,"Traverse City, MI"
+TWF,2,"Twin Falls, ID"
+TXK,2,"Texarkana, AR"
+TYR,3,"Tyler, TX"
+TYS,2,"Knoxville, TN"
+UIN,3,"Quincy, IL"
+USA,1,"CONCORD, NC"
+VLD,3,"Valdosta, GA"
+VPS,2,"Valparaiso, FL"
+WRG,1,"Wrangell, AK"
+WYS,1,"West Yellowstone, MT"
+XNA,1,"Fayetteville, AR"
+YAK,2,"Yakutat, AK"
+YKM,2,"Yakima, WA"
+YUM,4,"Yuma, AZ"

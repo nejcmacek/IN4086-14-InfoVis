@@ -8,10 +8,10 @@ class DataHandler():
         self.flights = pd.concat((pd.read_csv(f) for f in all_files))
         self.flights = self.flights.sort_values(by = ['FL_DATE', 'DEP_TIME'])
         self.planes = pd.read_csv('other_data/plane_data.csv', index_col='tail_number')
-        self.airports = pd.read_csv('other_data/airport_data.csv')
+        self.airports = pd.read_csv('other_data/airport_data.csv', index_col='airport')
 
     """Finds a random tail number and returns the first amount flights of that plane plus some additional information"""
-    def randomFlightHistory(self, amount):
+    def random_flight_history(self, amount):
         flight = self.flights.sample(n=1)
         tail_number = flight['TAIL_NUM'].values[0]
         carrier = flight['OP_CARRIER'].values[0]
@@ -22,3 +22,21 @@ class DataHandler():
         plane_info = self.planes.loc[tail_number,:]
 
         return {**{'tail_num': tail_number, 'op_carrier': carrier}, **selected_flights.to_dict('list'), **plane_info.to_dict()}
+
+    def flight_history(self, tail_number):
+        selected_flights = self.flights[self.flights["TAIL_NUM"] == tail_number]
+        carrier = selected_flights.sample(n=1)
+        carrier = carrier['OP_CARRIER'].values[0]
+
+        selected_flights = selected_flights.filter(items=['FL_DATE', 'ORIGIN', 'DEST', 'DEP_TIME', 'ARR_TIME', 'ARR_DELAY'])
+
+        plane_info = self.planes.loc[tail_number, :]
+
+        return {**{'tail_num': tail_number, 'op_carrier': carrier}, **selected_flights.to_dict('list'),
+                **plane_info.to_dict()}
+
+    def airport_list(self):
+        return self.airports.to_dict()
+
+    def plane_list(self):
+        return {'tail_num': sorted(self.planes.index.tolist())}
