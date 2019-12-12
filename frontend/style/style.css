@@ -1,6 +1,12 @@
+@import "./holder-ui.css";
+@import "./adaptive-size.css";
+@import "./display-airports/map.css";
+@import "./display-airports/layout.css";
+
 body {
 	margin: 0;
 	height: 100%;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .holder {
@@ -11,16 +17,10 @@ body {
 	left: 0;
 }
 
-.adaptive-size-holder {
-	align-items: center;
-	justify-content: center;
-	display: flex;
+.hidden {
+	display: none !important;
 }
 
-#img-usa {
-	position: absolute;
-}
-
-#canvas {
+.absolute-position {
 	position: absolute;
 }

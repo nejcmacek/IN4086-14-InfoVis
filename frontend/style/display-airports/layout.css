@@ -1,0 +1,55 @@
+#panel-airports {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+#panel-airports>.adaptive-size-holder {
+	max-width: 160vh;
+}
+
+#panel-airports>.map-holder {
+	flex: 1;
+	overflow: hidden;
+}
+
+#panel-airports>.info-holder {
+	display: flex;
+	flex-direction: column;
+	min-width: 200px;
+	width: 20vw;
+}
+
+#panel-airports .info-holder-pre {
+	flex: 4;
+}
+
+#panel-airports .info-holder-post {
+	flex: 1;
+}
+
+#panel-airports .info-holder-content {
+	padding-right: 24px;
+	position: relative;
+	left: -10vh;
+	width: calc(100% + 10vh);
+	box-sizing: border-box;
+}
+
+.info-holder-content .title {
+	text-align: center;
+}
+
+.info-holder-content .delay {
+	margin-top: 24px;
+}
+
+.info-holder-content .delay .gradient-map {
+	border: 1px solid black;
+	height: 30px;
+	background: linear-gradient(to right, #999 0%, #c95050 100%);
+}
+
+.info-holder-content .delay .label-end {
+	float: right;
+}

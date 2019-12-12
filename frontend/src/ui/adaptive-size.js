@@ -1,5 +1,5 @@
 /** @type {Map<HTMLElement, HTMLElement[]>} */
-let holders;
+let holders
 const sizableTags = ["IMG", "CANVAS", "SVG"]
 const imgAspectRatio = 960 / 600
 const listeners = {}

@@ -8,14 +8,58 @@
 </head>
 
 <body>
-	<div class="holder adaptive-size-holder">
-		<img class="adaptive-size" id="img-usa" src="media/usa-map.svg" alt="Map of USA">
-	</div>
-	<div class="holder">
-		<div class="holder adaptive-size-holder">
-			<canvas class="adaptive-size" id="airport-map" resize-listener="airport-map">
+
+	<div class="holder" id="holder-ui">
+		<div class="holder display-panel display-airports" id="panel-airports">
+			<div class="adaptive-size-holder map-holder">
+				<img class="adaptive-size absolute-position" id="img-usa" src="media/usa-map.svg" alt="Map of USA">
+				<div class="adaptive-size absolute-position" id="airport-map"></div>
+			</div>
+			<div class="info-holder">
+				<div class="info-holder-pre"></div>
+				<div class="info-holder-content">
+					<p class="title">Relevant Airport Information</p>
+					<p>
+						<b>Airport</b>: <span id="airport-info-panel-airport"></span>
+					</p>
+					<p>
+						<b>City, State</b>: <span id="airport-info-panel-city-state"></span>
+					</p>
+					<p>
+						<b>Number of Gates</b>: <span id="airport-info-panel-gates"></span>
+					</p>
+					<p>
+						<b>Number of Runways</b>: <span id="airport-info-panel-runways"></span>
+					</p>
+					<div class="delay">
+						<div class="label">Amount of Delay (minutes)</div>
+						<div class="gradient-map"></div>
+						<div>
+							<span class="label-start">0</span>
+							<span class="label-end">+60</span>
+						</div>
+					</div>
+				</div>
+				<div class="info-holder-post"></div>
+			</div>
+		</div>
+
+		<!-- <div class="holder display-panel display-flight" id="panel-flight">
+			Hahahah
+		</div> -->
+
+		<div class="panel-top">
+			<select id="input-display-type">
+				<option value="airports" selected>Airport Delay</option>
+				<option value="flight">Flight Delay</option>
+			</select>
+			<div class="display-airports">
+				airports bla bla
+			</div>
+			<!-- <div class="display-flight"></div> -->
 		</div>
 	</div>
+
 </body>
 
 </html>
