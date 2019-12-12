@@ -1,0 +1,57 @@
+.display-panel {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.display-panel>.adaptive-size-holder {
+	max-width: 160vh;
+}
+
+.display-panel>.map-holder {
+	flex: 1;
+	overflow: hidden;
+}
+
+.display-panel>.info-holder {
+	display: flex;
+	flex-direction: column;
+	min-width: 200px;
+	width: 20vw;
+}
+
+.display-panel .info-holder-pre {
+	flex: 4;
+}
+
+.display-panel .info-holder-post {
+	flex: 1;
+}
+
+.display-panel .info-holder-content {
+	padding-right: 24px;
+	position: relative;
+	left: -10vh;
+	width: calc(100% + 10vh);
+	box-sizing: border-box;
+}
+
+.display-panel .info-holder-content .title {
+	text-align: center;
+}
+
+.display-panel .info-holder-content .delay {
+	margin-top: 24px;
+}
+
+.display-panel .info-holder-content .delay .gradient-map {
+	border: 1px solid black;
+	height: 30px;
+}
+
+.display-panel .info-holder-content .delay .label-map {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+

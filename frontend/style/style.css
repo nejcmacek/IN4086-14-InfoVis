@@ -1,26 +1,10 @@
+@import "./layout.css";
+@import "./display-panel.css";
+@import "./display-airports.css";
+@import "./display-flight.css";
+
 body {
 	margin: 0;
 	height: 100%;
-}
-
-.holder {
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.adaptive-size-holder {
-	align-items: center;
-	justify-content: center;
-	display: flex;
-}
-
-#img-usa {
-	position: absolute;
-}
-
-#canvas {
-	position: absolute;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
