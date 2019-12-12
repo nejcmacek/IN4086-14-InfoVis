@@ -10,9 +10,10 @@
 <body>
 
 	<div class="holder" id="holder-ui">
+
 		<div class="holder display-panel display-airports" id="panel-airports">
 			<div class="adaptive-size-holder map-holder">
-				<img class="adaptive-size absolute-position" id="img-usa" src="media/usa-map.svg" alt="Map of USA">
+				<img class="adaptive-size absolute-position" src="media/usa-map.svg" alt="Map of USA">
 				<div class="adaptive-size absolute-position" id="airport-map"></div>
 			</div>
 			<div class="info-holder">
@@ -26,17 +27,14 @@
 						<b>City, State</b>: <span id="airport-info-panel-city-state"></span>
 					</p>
 					<p>
-						<b>Number of Gates</b>: <span id="airport-info-panel-gates"></span>
-					</p>
-					<p>
 						<b>Number of Runways</b>: <span id="airport-info-panel-runways"></span>
 					</p>
 					<div class="delay">
 						<div class="label">Amount of Delay (minutes)</div>
 						<div class="gradient-map"></div>
-						<div>
-							<span class="label-start">0</span>
-							<span class="label-end">+60</span>
+						<div class="label-map">
+							<span>0</span>
+							<span>+60</span>
 						</div>
 					</div>
 				</div>
@@ -44,9 +42,38 @@
 			</div>
 		</div>
 
-		<!-- <div class="holder display-panel display-flight" id="panel-flight">
-			Hahahah
-		</div> -->
+		<div class="holder display-panel display-flight" id="panel-flight">
+			<div class="adaptive-size-holder map-holder">
+				<img class="adaptive-size absolute-position" src="media/usa-map.svg" alt="Map of USA">
+				<canvas class="adaptive-size absolute-position" id="flight-canvas"></canvas>
+			</div>
+			<div class="info-holder">
+				<div class="info-holder-pre"></div>
+				<div class="info-holder-content">
+					<p class="title">Relevant Flight Information</p>
+					<p>
+						<b>Airline</b>: <span id="flight-info-panel-airline"></span>
+					</p>
+					<p>
+						<b>Type of Aircraft</b>: <span id="flight-info-panel-aircraft"></span>
+					</p>
+					<p>
+						<b>Possible Number of Passengers</b>: <span id="flight-info-panel-passengers"></span>
+					</p>
+					<div class="delay">
+						<div class="label">Amount of Delay (minutes)</div>
+						<div class="gradient-map"></div>
+						<div class="label-map">
+							<span>-60</span>
+							<span>0</span>
+							<span>+60</span>
+						</div>
+					</div>
+				</div>
+				<div class="info-holder-post"></div>
+			</div>
+
+		</div>
 
 		<div class="panel-top">
 			<select id="input-display-type">
@@ -56,7 +83,7 @@
 			<div class="display-airports">
 				airports bla bla
 			</div>
-			<!-- <div class="display-flight"></div> -->
+			<div class="display-flight"></div>
 		</div>
 	</div>
 

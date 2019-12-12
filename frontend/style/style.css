@@ -1,26 +1,10 @@
-@import "./holder-ui.css";
-@import "./adaptive-size.css";
-@import "./display-airports/map.css";
-@import "./display-airports/layout.css";
+@import "./layout.css";
+@import "./display-panel.css";
+@import "./display-airports.css";
+@import "./display-flight.css";
 
 body {
 	margin: 0;
 	height: 100%;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.holder {
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.hidden {
-	display: none !important;
-}
-
-.absolute-position {
-	position: absolute;
 }

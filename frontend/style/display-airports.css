@@ -1,3 +1,7 @@
+#panel-airports .gradient-map {
+	background: linear-gradient(to right, #999 0%, #c95050 100%);
+}
+
 #airport-map {
 	position: relative;
 }

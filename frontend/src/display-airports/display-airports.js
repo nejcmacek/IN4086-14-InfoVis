@@ -19,7 +19,6 @@ export default class DisplayAirports {
 	init() {
 		this.infoPanelAirport = document.getElementById("airport-info-panel-airport")
 		this.infoPanelCityState = document.getElementById("airport-info-panel-city-state")
-		this.infoPanelGates = document.getElementById("airport-info-panel-gates")
 		this.infoPanelRunways = document.getElementById("airport-info-panel-runways")
 
 		/** @type {HTMLDivElement} */
@@ -123,12 +122,10 @@ export default class DisplayAirports {
 		if (airport) {
 			this.infoPanelAirport.innerText = getAirportName(airport)
 			this.infoPanelCityState.innerText = airport.city
-			this.infoPanelGates.innerText = "(not known)"
 			this.infoPanelRunways.innerText = airport.runways
 		} else {
 			this.infoPanelAirport.innerText = ""
 			this.infoPanelCityState.innerText = ""
-			this.infoPanelGates.innerText = ""
 			this.infoPanelRunways.innerText = ""
 		}
 	}
