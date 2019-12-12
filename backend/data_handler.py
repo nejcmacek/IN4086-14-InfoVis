@@ -9,6 +9,7 @@ class DataHandler():
         self.flights = self.flights.sort_values(by = ['FL_DATE', 'DEP_TIME'])
         self.planes = pd.read_csv('other_data/plane_data.csv', index_col='tail_number')
         self.airports = pd.read_csv('other_data/airport_data.csv', index_col='airport')
+        self.airport_delay = pd.read_csv('other_data/airport_delay.csv', index_col='airport')
 
     """Finds a random tail number and returns the first amount flights of that plane plus some additional information"""
     def random_flight_history(self, amount):
@@ -40,3 +41,7 @@ class DataHandler():
 
     def plane_list(self):
         return {'tail_num': sorted(self.planes.index.tolist())}
+
+    def airport_delay_year(self, time):
+        return self.airport_delay[time].to_dict()
+
