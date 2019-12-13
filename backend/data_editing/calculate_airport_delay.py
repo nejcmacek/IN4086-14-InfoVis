@@ -20,10 +20,12 @@ for ap, _ in airports.iterrows():
         month += 1
         flights = pd.read_csv(f)
         flights = flights.sort_values(by=['FL_DATE'])
-        airport_flights = flights[flights['ORIGIN'] == ap]
+        airport_flights = pd.concat([flights[flights['ORIGIN'] == ap], flights[flights['DEST'] == ap]])
 
         month_total = 0
         month_divide_by = 0.0001
+
+        days = airport_flights.FL_DATE.unique()
 
         for day in days:
             day_total = 0
@@ -32,13 +34,22 @@ for ap, _ in airports.iterrows():
             day_flights = airport_flights[airport_flights['FL_DATE'] == day]
 
             for i, row in day_flights.iterrows():
-                if not math.isnan(row['DEP_DELAY']):
-                    if row['DEP_DELAY'] > 0:
-                        day_total = day_total + row['DEP_DELAY']
-                        month_total = month_total + row['DEP_DELAY']
-                        year_total = year_total + row['DEP_DELAY']
+                if row['ORIGIN'] == ap:
+                    if not math.isnan(row['DEP_DELAY']):
+                        if row['DEP_DELAY'] > 0:
+                            day_total = day_total + row['DEP_DELAY']
+                            month_total = month_total + row['DEP_DELAY']
+                            year_total = year_total + row['DEP_DELAY']
 
-                    day_divide_by, month_divide_by, year_divide_by = day_divide_by+1, month_divide_by+1, year_divide_by+1
+                        day_divide_by, month_divide_by, year_divide_by = day_divide_by+1, month_divide_by+1, year_divide_by+1
+                else:
+                    if not math.isnan(row['ARR_DELAY']):
+                        if row['ARR_DELAY'] > 0:
+                            day_total = day_total + row['ARR_DELAY']
+                            month_total = month_total + row['ARR_DELAY']
+                            year_total = year_total + row['ARR_DELAY']
+
+                        day_divide_by, month_divide_by, year_divide_by = day_divide_by + 1, month_divide_by + 1, year_divide_by + 1
 
             airports.at[ap, day] = day_total/day_divide_by
 
