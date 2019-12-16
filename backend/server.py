@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request
 from flask import make_response
+from flask import jsonify
 from flask_restful import Resource, Api
 from data_handler import *
 
@@ -11,35 +12,35 @@ dh = DataHandler()
 """Get flight history of length amount for a random plane"""
 class random_flight_history(Resource):
     def get(self):
-        response = make_response(dh.random_flight_history(int(request.args["amount"])))
+        response = make_response(jsonify(dh.random_flight_history(int(request.args["amount"]))))
         response.headers['Access-Control-Allow-Origin'] = '*'
 
         return response
 
 class flight_history(Resource):
     def get(self):
-        response = make_response(dh.flight_history(request.args["tail_num"]))
+        response = make_response(jsonify(dh.flight_history(request.args["tail_num"])))
         response.headers['Access-Control-Allow-Origin'] = '*'
 
         return response
 
 class airport_list(Resource):
     def get(self):
-        response = make_response(dh.airport_list())
+        response = make_response(jsonify(dh.airport_list()))
         response.headers['Access-Control-Allow-Origin'] = '*'
 
         return response
 
 class plane_list(Resource):
     def get(self):
-        response = make_response(dh.plane_list())
+        response = make_response(jsonify(dh.plane_list()))
         response.headers['Access-Control-Allow-Origin'] = '*'
 
         return response
 
 class airport_delay(Resource):
     def get(self):
-        response = make_response(dh.airport_delay_year(request.args["time"]))
+        response = make_response(jsonify(dh.airport_delay_year(request.args["time"])))
         response.headers['Access-Control-Allow-Origin'] = '*'
 
         return response
