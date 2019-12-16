@@ -8,17 +8,19 @@
 </head>
 
 <body>
-
 	<div class="holder" id="holder-ui">
+
 
 		<div class="holder display-panel display-airports" id="panel-airports">
 			<div class="adaptive-size-holder map-holder">
-				<img class="adaptive-size absolute-position" src="media/usa-map.svg" alt="Map of USA">
+				<img class="adaptive-size absolute-position usa-map" src="media/usa-map.svg" alt="Map of USA">
 				<div class="adaptive-size absolute-position" id="airport-map"></div>
 			</div>
+
 			<div class="info-holder">
 				<div class="info-holder-pre"></div>
 				<div class="info-holder-content">
+
 					<p class="title">Relevant Airport Information</p>
 					<p>
 						<b>Airport</b>: <span id="airport-info-panel-airport"></span>
@@ -29,6 +31,7 @@
 					<p>
 						<b>Number of Runways</b>: <span id="airport-info-panel-runways"></span>
 					</p>
+
 					<div class="delay">
 						<div class="label">Amount of Delay (minutes)</div>
 						<div class="gradient-map"></div>
@@ -37,14 +40,70 @@
 							<span>+60</span>
 						</div>
 					</div>
+					<div class="input-panel">
+						<p class="title">Display Settings</p>
+
+						<div class="input-field radio">
+							<span class="label">Time Unit</span>
+							<input type="radio" name="airport-time-unit" id="airport-unit-time-day" value="day"> <label for="airport-unit-time-day">Day</label>
+							<input type="radio" name="airport-time-unit" id="airport-unit-time-month" value="month"> <label for="airport-unit-time-month">Month</label>
+						</div>
+						<div class="input-field radio">
+							<span class="label">Time Frame</span>
+							<input type="radio" name="airport-time-frame" id="airport-frame-time-single" value="single"> <label for="airport-frame-time-single">Single</label>
+							<input type="radio" name="airport-time-frame" id="airport-frame-time-range" value="range"> <label for="airport-frame-time-range">Range</label>
+						</div>
+
+						<div class="input-control-holder" id="airport-input-control-month">
+							<div class="input-control month single" id="airport-input-control-month-single">
+								<div class="input-field inline">
+									<span class="label">Month:</span>
+									<select id="airport-input-field-month-single"></select>
+								</div>
+							</div>
+							<div class="input-control month range" id="airport-input-control-month-range">
+								<div class="input-field inline">
+									<span class="label">Start:</span>
+									<select id="airport-input-field-month-range-start"></select>
+								</div>
+								<div class="input-field inline">
+									<span class="label">End:</span>
+									<select id="airport-input-field-month-range-end"></select>
+								</div>
+								<div class="input-field trackbar" id="airport-month-range-trackbar"></div>
+							</div>
+						</div>
+
+						<div class="input-control-holder" id="airport-input-control-day">
+							<div class="input-control day single" id="airport-input-control-day-single">
+								<div class="input-field inline">
+									<span class="label">Day:</span>
+									<input type="date" min="01-05-2018" max="30-04-2019" id="airport-input-field-day-single" />
+								</div>
+							</div>
+							<div class="input-control day range" id="airport-input-control-day-range">
+								<div class="input-field inline">
+									<span class="label">Start:</span>
+									<input type="date" min="01-05-2018" max="30-04-2019" id="airport-input-field-day-range-start">
+								</div>
+								<div class="input-field inline">
+									<span class="label">End:</span>
+									<input type="date" min="01-05-2018" max="30-04-2019" id="airport-input-field-day-range-end">
+								</div>
+								<div class="input-field trackbar" id="airport-day-range-trackbar"></div>
+							</div>
+						</div>
+
+					</div>
 				</div>
 				<div class="info-holder-post"></div>
 			</div>
 		</div>
 
+
 		<div class="holder display-panel display-flight" id="panel-flight">
 			<div class="adaptive-size-holder map-holder">
-				<img class="adaptive-size absolute-position" src="media/usa-map.svg" alt="Map of USA">
+				<img class="adaptive-size absolute-position usa-map" src="media/usa-map.svg" alt="Map of USA">
 				<canvas class="adaptive-size absolute-position" id="flight-canvas"></canvas>
 			</div>
 			<div class="info-holder">
@@ -73,19 +132,21 @@
 				<div class="info-holder-post"></div>
 			</div>
 
-		</div>
 
+		</div>
 		<div class="panel-top">
 			<select id="input-display-type">
 				<option value="airports" selected>Airport Delay</option>
 				<option value="flight">Flight Delay</option>
 			</select>
-			<div class="display-airports">
-				airports bla bla
+			<div class="display-flight">
+				<select id="input-plane">
+					<option disabled selected>(Loading...)</option>
+				</select>
 			</div>
-			<div class="display-flight"></div>
 		</div>
 	</div>
+
 
 </body>
 

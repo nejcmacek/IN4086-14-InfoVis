@@ -1,0 +1,56 @@
+.trackbar-holder>.trackbar {
+	padding: 0 12px;
+	height: 24px;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.trackbar-holder .endpoint {
+	height: 24px;
+	width: 24px;
+	position: absolute;
+	border-radius: 50%;
+	box-sizing: border-box;
+	border: 2px solid black;
+}
+
+.trackbar-holder .endpoint.left {
+	left: 0;
+}
+
+.trackbar-holder .endpoint.right {
+	right: 0;
+}
+
+.trackbar-holder .bar-holder {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
+.trackbar-holder .bar {
+	top: 50%;
+	position: absolute;
+	margin-top: -1px;
+	left: 12px;
+	width: calc(100% - 24px);
+	height: 2px;
+	background: black;
+}
+
+.trackbar-holder .cursor {
+	position: absolute;
+	height: 24px;
+	width: 24px;
+	margin-left: -12px;
+	border-radius: 50%;
+	background: black;
+}
+
+.trackbar-holder>.label {
+	margin-top: 12px;
+	padding: 0 12px;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

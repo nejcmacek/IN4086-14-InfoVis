@@ -2,9 +2,15 @@
 @import "./display-panel.css";
 @import "./display-airports.css";
 @import "./display-flight.css";
+@import "./trackbar.css";
 
 body {
 	margin: 0;
 	height: 100%;
+}
+
+body,
+select,
+input {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

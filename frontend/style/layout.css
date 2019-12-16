@@ -6,6 +6,14 @@
 	left: 0;
 }
 
+body {
+	background: #dadada;
+}
+
+.usa-map {
+	filter: brightness(0.65);
+}
+
 .adaptive-size-holder {
 	align-items: center;
 	justify-content: center;
@@ -21,6 +29,7 @@
 
 .panel-top select {
 	width: 200px;
+	font-size: 1.2em;
 }
 
 #holder-ui {

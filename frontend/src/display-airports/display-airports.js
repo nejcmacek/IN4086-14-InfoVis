@@ -1,4 +1,5 @@
 import airports from "../data/airports.js"
+import InputControl from "./input-control.js"
 
 const minAirportCursorDistance = 8
 const focusedAirportRange = 48
@@ -47,6 +48,9 @@ export default class DisplayAirports {
 		this.map.addEventListener("click", () => this.onClick())
 		this.closestAirport = null // airport closes to the cursor
 		this.focusedAirport = null // airport in focus
+
+		this.inputControl = new InputControl()
+		this.inputControl.init()
 	}
 
 	getMouseEventMapCoords(e) {

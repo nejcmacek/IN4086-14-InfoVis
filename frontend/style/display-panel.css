@@ -4,6 +4,12 @@
 	justify-content: center;
 }
 
+.display-panel input[type=date],
+.display-panel select {
+	height: 26px;
+	line-height: 26px;
+}
+
 .display-panel>.adaptive-size-holder {
 	max-width: 160vh;
 }
@@ -38,6 +44,7 @@
 
 .display-panel .info-holder-content .title {
 	text-align: center;
+	font-size: 1.2em;
 }
 
 .display-panel .info-holder-content .delay {
@@ -55,3 +62,22 @@
 	justify-content: space-between;
 }
 
+.input-panel {
+	margin-top: 32px;
+}
+
+.input-panel .input-field {
+	margin-bottom: 12px;
+}
+
+.input-panel .input-field.inline .label {
+	height: 26px;
+	line-height: 26px;
+}
+
+.input-panel .label {
+	min-width: 100px;
+	display: inline-block;
+	text-align: right;
+	margin-right: 8px;
+}
