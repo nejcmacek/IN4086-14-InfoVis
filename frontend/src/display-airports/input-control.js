@@ -80,6 +80,8 @@ export default class InputControl {
 			this.elementDay.classList.add(hiddenClass)
 			this.elementMonth.classList.remove(hiddenClass)
 		}
+		this.trackbarDayRange.setPlaying(false)
+		this.trackbarMonthRange.setPlaying(false)
 	}
 
 	onChangeTimeFrame() {
@@ -94,6 +96,8 @@ export default class InputControl {
 			this.elementMonthSingle.classList.add(hiddenClass)
 			this.elementMonthRange.classList.remove(hiddenClass)
 		}
+		this.trackbarDayRange.setPlaying(false)
+		this.trackbarMonthRange.setPlaying(false)
 	}
 
 	onChangeMonthSingle() {

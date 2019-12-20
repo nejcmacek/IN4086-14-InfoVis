@@ -4,10 +4,15 @@
 	justify-content: center;
 }
 
-.display-panel input[type=date],
-.display-panel select {
-	height: 26px;
-	line-height: 26px;
+.input-panel input,
+.input-panel select {
+	border: none;
+	min-width: 150px;
+	height: 24px;
+	line-height: 24px;
+	font-size: 0.85em;
+	padding-left: 8px;
+	box-sizing: border-box;
 }
 
 .display-panel>.adaptive-size-holder {
@@ -70,6 +75,10 @@
 	margin-bottom: 12px;
 }
 
+.input-panel .input-field.inline {
+	display: flex;
+}
+
 .input-panel .input-field.radio input {
 	display: none;
 }
@@ -91,8 +100,9 @@
 	cursor: pointer;
 	transition: all .3s;
 	text-align: center;
-	min-width: 69px;
+	min-width: 74px;
 	box-sizing: border-box;
+	font-size: 0.85em;
 }
 
 .input-panel .input-field.radio input+label:hover {
@@ -115,19 +125,13 @@
 }
 
 .input-panel .input-field.inline .label {
-	height: 26px;
-	line-height: 26px;
+	height: 24px;
+	line-height: 24px;
 }
 
 .input-panel .label {
 	min-width: 100px;
 	display: inline-block;
 	text-align: right;
-	margin-right: 8px;
-}
-
-.input-panel input,
-.input-panel select {
-	border: none;
-	min-width: 140px;
+	margin-right: 12px;
 }
