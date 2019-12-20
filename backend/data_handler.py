@@ -9,7 +9,16 @@ class DataHandler():
         self.flights = self.flights.sort_values(by = ['FL_DATE', 'DEP_TIME'])
         self.planes = pd.read_csv('other_data/plane_data.csv', index_col='tail_number')
         self.airports = pd.read_csv('other_data/airport_data.csv', index_col='airport')
+
         self.airport_delay = pd.read_csv('other_data/airport_delay.csv', index_col='airport')
+        self.arrival_delay = pd.read_csv('other_data/arrival_delay.csv', index_col='airport')
+        self.departure_delay = pd.read_csv('other_data/departure_delay.csv', index_col='airport')
+        self.carrier_delay = pd.read_csv('other_data/carrier_delay.csv', index_col='airport')
+        self.late_aircraft_delay = pd.read_csv('other_data/late_aircraft_delay.csv', index_col='airport')
+        self.nas_delay = pd.read_csv('other_data/nas_delay.csv', index_col='airport')
+        self.security_delay = pd.read_csv('other_data/security_delay.csv', index_col='airport')
+        self.weather_delay = pd.read_csv('other_data/weather_delay.csv', index_col='airport')
+
 
     """Finds a random tail number and returns the first amount flights of that plane plus some additional information"""
     def random_flight_history(self, amount):
@@ -42,6 +51,13 @@ class DataHandler():
     def plane_list(self):
         return {'tail_num': sorted(self.planes.index.tolist())}
 
-    def airport_delay_year(self, time):
+    def airport_delay(self, time):
         return self.airport_delay[time].to_dict()
+
+    def airport_delay_types(self, airport, time):
+        return {'airport': airport, 'time': time,  'carrier_delay': self.carrier_delay.loc[airport, time], 'weather_delay': self.weather_delay.loc[airport, time],
+                'nas_delay': self.nas_delay.loc[airport, time], 'security_delay': self.security_delay.loc[airport, time],
+                'late_aircraft_delay': self.late_aircraft_delay.loc[airport, time], 'arrival_delay': self.arrival_delay.loc[airport, time],
+                'departure_delay': self.departure_delay.loc[airport, time], 'total_delay': self.airport_delay.loc[airport, time]}
+
 

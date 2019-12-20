@@ -37,6 +37,7 @@ for ap, _ in airports.iterrows():
                 if row['ORIGIN'] == ap:
                     if not math.isnan(row['DEP_DELAY']):
                         if row['DEP_DELAY'] > 0:
+                            print(row)
                             day_total = day_total + row['DEP_DELAY']
                             month_total = month_total + row['DEP_DELAY']
                             year_total = year_total + row['DEP_DELAY']
@@ -45,6 +46,7 @@ for ap, _ in airports.iterrows():
                 else:
                     if not math.isnan(row['ARR_DELAY']):
                         if row['ARR_DELAY'] > 0:
+                            print(row)
                             day_total = day_total + row['ARR_DELAY']
                             month_total = month_total + row['ARR_DELAY']
                             year_total = year_total + row['ARR_DELAY']
@@ -56,7 +58,8 @@ for ap, _ in airports.iterrows():
         airports.at[ap, current_month] = month_total / month_divide_by
 
     airports.at[ap, 'year'] = year_total / year_divide_by
-    print(airports)
+    print(airports.loc[['ABE']].to_string())
+    break
 
 airports = airports.fillna(0.0)
-airports.to_csv('other_data/airport_delay.csv', header=True, index=True)
+#airports.to_csv('other_data/airport_delay.csv', header=True, index=True)

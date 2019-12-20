@@ -40,7 +40,14 @@ class plane_list(Resource):
 
 class airport_delay(Resource):
     def get(self):
-        response = make_response(jsonify(dh.airport_delay_year(request.args["time"])))
+        response = make_response(jsonify(dh.airport_delay(request.args["time"])))
+        response.headers['Access-Control-Allow-Origin'] = '*'
+
+        return response
+
+class airport_delay_types(Resource):
+    def get(self):
+        response = make_response(jsonify(dh.airport_delay_types(request.args["airport"], request.args["time"])))
         response.headers['Access-Control-Allow-Origin'] = '*'
 
         return response
@@ -51,6 +58,8 @@ api.add_resource(flight_history, '/flighthistory')
 api.add_resource(airport_list, '/airportlist')
 api.add_resource(plane_list, '/planelist')
 api.add_resource(airport_delay, '/airportdelay')
+api.add_resource(airport_delay_types, '/airportdelaytypes')
+
 
 
 
