@@ -1,5 +1,6 @@
 import airports from "../data/airports.js"
 import InputControl from "./input-control.js"
+import AirportDelays from "./airport-delays.js"
 
 const minAirportCursorDistance = 8
 const focusedAirportRange = 48
@@ -21,6 +22,7 @@ export default class DisplayAirports {
 		this.infoPanelAirport = document.getElementById("airport-info-panel-airport")
 		this.infoPanelCityState = document.getElementById("airport-info-panel-city-state")
 		this.infoPanelRunways = document.getElementById("airport-info-panel-runways")
+		this.infoPanelDelay = document.getElementById("airport-info-panel-delay")
 
 		/** @type {HTMLDivElement} */
 		this.map = document.getElementById("airport-map")
@@ -40,6 +42,8 @@ export default class DisplayAirports {
 			this.map.appendChild(div)
 			this.elements.push(div)
 			a.element = div
+			a.delay = NaN
+			a.ring = ring
 		}
 
 		this.captureMapBounds()
@@ -49,8 +53,10 @@ export default class DisplayAirports {
 		this.closestAirport = null // airport closes to the cursor
 		this.focusedAirport = null // airport in focus
 
-		this.inputControl = new InputControl()
+		this.airportDelays = new AirportDelays()
+		this.inputControl = new InputControl(this.airportDelays)
 		this.inputControl.init()
+		this.airportDelays.addEventListener(() => this.onCurrentDelayChange())
 	}
 
 	getMouseEventMapCoords(e) {
@@ -127,15 +133,35 @@ export default class DisplayAirports {
 			this.infoPanelAirport.innerText = getAirportName(airport)
 			this.infoPanelCityState.innerText = airport.city
 			this.infoPanelRunways.innerText = airport.runways
+			this.setInfoPanelDelayText(airport)
 		} else {
 			this.infoPanelAirport.innerText = ""
 			this.infoPanelCityState.innerText = ""
 			this.infoPanelRunways.innerText = ""
+			this.infoPanelDelay.innerText = ""
 		}
+	}
+
+	setInfoPanelDelayText(airport) {
+		const delays = this.airportDelays.currentDelays
+		if (delays)
+			this.infoPanelDelay.innerText = Math.round(delays[airport.code]) + " minute(s)"
+		else
+			this.infoPanelDelay.innerText = ""
+	}
+
+	getDisplayedAirport() {
+		return this.focusedAirport || this.closestAirport || null
 	}
 
 	captureMapBounds() {
 		this.mapBounds = this.map.getBoundingClientRect()
+	}
+
+	onCurrentDelayChange() {
+		const airport = this.getDisplayedAirport()
+		if (airport)
+			this.setInfoPanelDelayText(airport)
 	}
 
 	activated() {

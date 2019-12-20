@@ -1,0 +1,216 @@
+#overlay-loading {
+	text-align: center;
+}
+
+#overlay-loading .loading-holder {
+	display: inline-block;
+}
+
+#overlay-loading h1 {
+	margin: 0
+}
+
+#overlay-loading .text {
+	position: relative;
+	animation: loading-move 5s infinite;
+}
+
+#overlay-loading .title-bar {
+	display: flex;
+	align-items: center;
+	height: 60px;
+	transform-origin: 20px 30px;
+	animation: loading-rotate 5s infinite;
+}
+
+#overlay-loading .loading-holder {
+	height: 40px;
+	width: 40px;
+	margin-right: 24px;
+}
+
+#overlay-loading .loading-div {
+	animation: loading-border-radius 2.5s infinite;
+	height: 40px;
+	width: 40px;
+	border: 6px solid black;
+	box-sizing: border-box;
+}
+
+@keyframes loading-border-radius {
+	0% {
+		border-radius: 10%;
+	}
+
+	33% {
+		border-radius: 10%;
+	}
+
+	50% {
+		border-radius: 50%;
+	}
+
+	83% {
+		border-radius: 50%;
+	}
+
+	100% {
+		border-radius: 10%;
+	}
+}
+
+@keyframes loading-rotate {
+	0% {
+		transform: rotate(0);
+	}
+
+	4% {
+		transform: rotate(0);
+	}
+
+	12.5% {
+		transform: rotate(90deg);
+	}
+
+	29% {
+		transform: rotate(90deg);
+	}
+
+	37.5% {
+		transform: rotate(180deg);
+	}
+
+	54% {
+		transform: rotate(180deg);
+	}
+
+	62.5% {
+		transform: rotate(270deg);
+	}
+
+	79% {
+		transform: rotate(270deg);
+	}
+
+	87.5% {
+		transform: rotate(360deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes loading-move {
+	0% {
+		top: 0;
+	}
+
+	4% {
+		top: 0;
+	}
+
+	12.5% {
+		top: 200px;
+	}
+
+	29% {
+		top: 200px;
+	}
+
+	37.5% {
+		top: 0;
+	}
+
+	100% {
+		top: 0;
+	}
+}
+
+/* @keyframes loading-animation-full {
+	0% {
+		border-radius: 10%;
+		transform: rotate(0);
+	}
+
+	4% {
+		border-radius: 10%;
+		transform: rotate(0);
+	}
+
+	12.5% {
+		border-radius: 10%;
+		transform: rotate(90deg);
+	}
+
+	16.5% {
+		border-radius: 10%;
+		transform: rotate(90deg);
+	}
+
+	25% {
+		border-radius: 35%;
+		transform: rotate(90deg);
+	}
+
+	29% {
+		border-radius: 35%;
+		transform: rotate(90deg);
+	}
+
+	37.5% {
+		border-radius: 35%;
+		transform: rotate(180deg);
+	}
+
+	41.5% {
+		border-radius: 35%;
+		transform: rotate(180deg);
+	}
+
+	50% {
+		border-radius: 10%;
+		transform: rotate(180deg);
+	}
+
+	54% {
+		border-radius: 10%;
+		transform: rotate(180deg);
+	}
+
+	62.5% {
+		border-radius: 10%;
+		transform: rotate(240deg);
+	}
+
+	66.5% {
+		border-radius: 10%;
+		transform: rotate(240deg);
+	}
+
+	75% {
+		border-radius: 35%;
+		transform: rotate(240deg);
+	}
+
+	79% {
+		border-radius: 35%;
+		transform: rotate(240deg);
+	}
+
+	87.5% {
+		border-radius: 35%;
+		transform: rotate(360deg);
+	}
+
+	91.5% {
+		border-radius: 35%;
+		transform: rotate(360deg);
+	}
+
+	100% {
+		border-radius: 10%;
+		transform: rotate(360deg);
+	}
+
+} */

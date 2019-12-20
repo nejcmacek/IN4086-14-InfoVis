@@ -2,6 +2,12 @@
 	background: linear-gradient(to right, white 0%, red 100%);
 }
 
+#airport-loading {
+	font-size: 4em;
+	text-align: center;
+	position: absolute;
+}
+
 #airport-map {
 	position: relative;
 }
@@ -14,13 +20,13 @@
 
 .airport-point>.ring {
 	position: absolute;
-	height: 0;
-	width: 0;
-	margin-left: 0;
-	margin-top: 0;
+	height: 12px;
+	width: 12px;
+	margin-left: -6px;
+	margin-top: -6px;
 	border-radius: 50%;
-	background: red;
-	transition: all .2s;
+	background: #ff000000;
+	transition: width .2s, height .2s, margin .2s, background-color .08s;
 }
 
 .airport-point>.marker {
@@ -39,17 +45,17 @@
 }
 
 .airport-point.closest>.ring {
-	width: 12px;
-	height: 12px;
-	margin-left: -6px;
-	margin-top: -6px;
+	width: 18px;
+	height: 18px;
+	margin-left: -9px;
+	margin-top: -9px;
 }
 
 .airport-point.closest>.marker {
-	width: 4px;
-	height: 4px;
-	margin-left: -2px;
-	margin-top: -2px;
+	width: 6px;
+	height: 6px;
+	margin-left: -3px;
+	margin-top: -3px;
 }
 
 .airport-point.focused {
@@ -64,8 +70,12 @@
 }
 
 .airport-point.focused>.marker {
-	width: 4px;
-	height: 4px;
-	margin-left: -2px;
-	margin-top: -2px;
+	width: 8px;
+	height: 8px;
+	margin-left: -4px;
+	margin-top: -4px;
+}
+
+#panel-airports .input-panel {
+	min-height: 250px;
 }

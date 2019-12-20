@@ -1,5 +1,5 @@
 export function compareDateStrings(a, b) {
-	a.localeCompare(b)
+	return a.localeCompare(b)
 }
 
 export function dateStringToNumberArray(s) {
@@ -29,4 +29,8 @@ export function getDatesInBetween(a, b) {
 		dates[i] = toDateString(new Date(start + i * day))
 
 	return dates
+}
+
+export function invertDateString(dateString) {
+	return dateString.split("-").reverse().join("-")
 }

@@ -1,4 +1,5 @@
 const cursorSize = 24
+const defaultPlayDelay = 100
 
 export default class Trackbar {
 
@@ -13,6 +14,8 @@ export default class Trackbar {
 		const bar = document.createElement("div")
 		const cursor = document.createElement("div")
 		const label = document.createElement("div")
+		const play = document.createElement("div")
+		const controls = document.createElement("div")
 
 		// build UI - handle the root element
 		element.classList.add("trackbar-holder")
@@ -26,7 +29,9 @@ export default class Trackbar {
 		barHolder.className = "bar-holder"
 		bar.className = "bar"
 		cursor.className = "cursor"
-		label.className = "label hidden"
+		label.className = "trackbar-label hidden"
+		play.className = "trackbar-play"
+		controls.className = "controls"
 
 		// build UI - set attributes
 		trackbar.setAttribute("tabindex", "0")
@@ -37,28 +42,43 @@ export default class Trackbar {
 		trackbar.appendChild(endpointLeft)
 		trackbar.appendChild(endpointRight)
 		trackbar.appendChild(barHolder)
-		element.appendChild(trackbar)
+		controls.appendChild(play)
+		controls.appendChild(trackbar)
+		element.appendChild(controls)
+		element.appendChild(label)
 
 		// store element references
+		this.element = element
 		this.trackbar = trackbar
 		this.cursor = cursor
 		this.label = label
+		this.play = play
 
 		// mouse tracking even handlers
 		this.mouseDownHandler = this.onMouseDown.bind(this)
 		this.mouseMoveHandler = this.onMouseMove.bind(this)
+		this.playClickHandler = this.onPlayClick.bind(this)
+		this.keyDownHandler = this.onKeyDown.bind(this)
 		trackbar.addEventListener("mousedown", this.mouseDownHandler)
+		play.addEventListener("click", this.playClickHandler)
+		trackbar.addEventListener("keydown", this.keyDownHandler)
 
 		// trackbar's events
 		this.listeners = []
 
 		// values
 		this.value = 0
+		this.playing = false
+		this.playInterval = NaN
+		this.playDelay = defaultPlayDelay;
 		this.setOptions(options)
 	}
 
 	/** @param {TrackbarOptions} [options] */
 	setOptions(options) {
+		if (typeof options.playDelay === "number")
+			this.setPlayDelay(options.playDelay)
+
 		if (options && this.isValidStepsNumber(options.steps)) {
 			// update settings
 			this.steps = options.steps
@@ -222,30 +242,105 @@ export default class Trackbar {
 		const dx = e.clientX - this.locBounds.left
 		const loc = dx / this.trackbar.clientWidth
 		this.setValue(loc)
-		// const cx = this.value * (this.trackbar.clientWidth - cursorSize)
-		// const dx = e.clientX - this.locMouseX
-		// const x = cx + dx
-		// const loc = x / (this.trackbar.clientWidth - cursorSize)
-		// this.setValue(loc)
 	}
 
 	startMouseTracking() {
 		if (this.mouseTracking)
 			return
 		this.mouseTracking = true
-		this.trackbar.addEventListener("mousemove", this.mouseMoveHandler)
+		document.addEventListener("mousemove", this.mouseMoveHandler)
 	}
 
 	stopMouseTracking() {
 		if (!this.mouseTracking)
 			return
 		this.mouseTracking = false
-		this.trackbar.removeEventListener("mousemove", this.mouseMoveHandler)
+		document.removeEventListener("mousemove", this.mouseMoveHandler)
+	}
+
+	onPlayClick() {
+		this.togglePlaying()
+	}
+
+	setPlayDelay(delay) {
+		this.playDelay = delay || defaultPlayDelay
+	}
+
+	setPlaying(value) {
+		if (value === this.playing)
+			return
+
+		if (!this.canPlay())
+			return
+
+		this.playing = value
+		if (value) {
+			this.element.classList.add("playing")
+			this.playInterval = setInterval(() => this.playMakeStep(), this.playDelay)
+			this.playMakeStep()
+		} else {
+			this.stopPlaying()
+		}
+	}
+
+	togglePlaying() {
+		this.setPlaying(!this.playing)
+	}
+
+	playMakeStep() {
+		if (!this.playing || !this.canPlay()) {
+			this.stopPlaying()
+			return
+		}
+		const step = (this.step + 1) % this.steps
+		this.setStep(step)
+	}
+
+	stopPlaying() {
+		clearInterval(this.playInterval)
+		this.playInterval = NaN
+		this.playing = false
+		this.element.classList.remove("playing")
+	}
+
+	canPlay() {
+		return this.hasSteps()
+	}
+
+	/** @param {KeyboardEvent} e */
+	onKeyDown(e) {
+		console.log(e)
+		switch (e.keyCode) {
+			case 37: // left
+				if (this.hasSteps())
+					this.setStep((this.step + this.steps - 1) % this.steps)
+				break
+			case 39:// right
+				if (this.hasSteps())
+					this.setStep((this.step + 1) % this.steps)
+				break
+			case 38: // up
+				if (this.hasSteps())
+					this.setStep(this.steps - 1)
+				break;
+			case 40: //down
+				if (this.hasSteps())
+					this.setStep(0)
+				break
+			case 32: // space
+				if (this.canPlay())
+					this.togglePlaying()
+				break
+			default:
+				return
+		}
+		e.preventDefault()
 	}
 
 	dispose() {
 		this.stopMouseTracking()
 		this.trackbar.removeEventListener("mousedown", this.mouseDownHandler)
+		this.play.removeEventListener("click", this.playClickHandler)
 	}
 
 }

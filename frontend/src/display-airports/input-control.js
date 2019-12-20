@@ -1,10 +1,15 @@
-import { compareDateStrings, getDatesInBetween } from "../utils/date-string.js"
-import { compareMonths, getMonthDisplayString, monthValues, getMonthsInBetween, getMonthsDisplayStringsInBetween, countMonthsInBetween } from "../utils/months.js"
 import Trackbar from "../ui/trackbar.js"
+import { compareDateStrings, getDatesInBetween } from "../utils/date-string.js"
+import { compareMonths, countMonthsInBetween, getMonthDisplayString, getMonthsDisplayStringsInBetween, getMonthsInBetween, monthValues } from "../utils/months.js"
+import AirportDelays from "./airport-delays.js"
 
 const hiddenClass = "hidden"
 
 export default class InputControl {
+
+	constructor(airportDelays) {
+		this.airportDelays = airportDelays
+	}
 
 	init() {
 		// retrieve element references
@@ -50,8 +55,8 @@ export default class InputControl {
 		this.elementMonthRangeTrackbar.classList.add(hiddenClass)
 
 		// manage trackbars
-		this.trackbarMonthRange = new Trackbar(this.elementMonthRangeTrackbar)
-		this.trackbarDayRange = new Trackbar(this.elementDayRangeTrackbar)
+		this.trackbarMonthRange = new Trackbar(this.elementMonthRangeTrackbar, { playDelay: 500 })
+		this.trackbarDayRange = new Trackbar(this.elementDayRangeTrackbar, { playDelay: 1000 / 3 })
 		this.trackbarMonthRange.addEventListener(this.onChangeMonthTrackbar.bind(this))
 		this.trackbarDayRange.addEventListener(this.onChangeDayTrackbar.bind(this))
 
@@ -93,12 +98,18 @@ export default class InputControl {
 
 	onChangeMonthSingle() {
 		const value = this.inputMonthSingle.value
+		if (!value)
+			return
+
+		this.declareDisplayDomain([value])
 		this.displayMonth(value)
 	}
 
 	onChangeMonthRangeStart() {
 		const value = this.inputMonthRangeStart.value
-		// this.inputFieldMonthRangeEnd.min = value
+		if (!this.inputMonthRangeEnd.value || !value)
+			return
+
 		if (compareMonths(this.inputMonthRangeEnd.value, value) < 0)
 			this.inputMonthRangeEnd.value = value
 
@@ -107,7 +118,9 @@ export default class InputControl {
 
 	onChangeMonthRangeEnd() {
 		const value = this.inputMonthRangeEnd.value
-		// this.inputFieldMonthRangeStart.max = value
+		if (!this.inputMonthRangeStart.value || !value)
+			return
+
 		if (compareMonths(this.inputMonthRangeStart.value, value) > 0)
 			this.inputMonthRangeStart.value = value
 
@@ -126,6 +139,7 @@ export default class InputControl {
 		const steps = countMonthsInBetween(start, end)
 		const items = getMonthsInBetween(start, end)
 		const labels = getMonthsDisplayStringsInBetween(start, end)
+		this.declareDisplayDomain(items)
 		this.trackbarMonthRange.setOptions({ steps, items, labels, step: 0 })
 		this.elementMonthRangeTrackbar.classList.remove("hidden")
 	}
@@ -137,22 +151,30 @@ export default class InputControl {
 
 	onChangeDaySingle() {
 		const value = this.inputDaySingle.value
+		if (!value)
+			return
+
+		this.declareDisplayDomain([value])
 		this.displayDay(value)
 	}
 
 	onChangeDayRangeStart() {
 		const value = this.inputDayRangeStart.value
-		// this.inputFieldDayRangeEnd.min = value
-		if (compareDateStrings(this.inputFieldDayRangeEnd.value < value) < 0)
-			this.inputFieldDayRangeEnd.value = value
+		if (!this.inputDayRangeEnd.value || !value)
+			return
+
+		if (compareDateStrings(this.inputDayRangeEnd.value, value) < 0)
+			this.inputDayRangeEnd.value = value
 
 		this.updateDayTrackbar()
 	}
 
 	onChangeDayRangeEnd() {
-		const value = this.inputFieldDayRangeEnd.value
-		// this.inputFieldDayRangeStart.max = value
-		if (compareDateStrings(this.inputDayRangeStart.value < value) > 0)
+		const value = this.inputDayRangeEnd.value
+		if (!this.inputDayRangeStart.value || !value)
+			return
+
+		if (compareDateStrings(this.inputDayRangeStart.value, value) > 0)
 			this.inputDayRangeStart.value = value
 
 		this.updateDayTrackbar()
@@ -168,7 +190,8 @@ export default class InputControl {
 			return
 
 		const between = getDatesInBetween(start, end)
-		this.trackbarMonthRange.setOptions({
+		this.declareDisplayDomain(between)
+		this.trackbarDayRange.setOptions({
 			steps: between.length,
 			items: between,
 			labels: between,
@@ -179,15 +202,20 @@ export default class InputControl {
 
 	onChangeDayTrackbar() {
 		const item = this.trackbarDayRange.getItem()
+		this.declareDisplayDomain([item])
 		this.displayDay(item)
 	}
 
+	declareDisplayDomain(values) {
+		this.airportDelays.declareDisplayDomain(values)
+	}
+
 	displayMonth(value) {
-		// TODO: finish
+		this.airportDelays.displayDate(value)
 	}
 
 	displayDay(value) {
-		// TODO: finish
+		this.airportDelays.displayDate(value)
 	}
 
-}
+}	

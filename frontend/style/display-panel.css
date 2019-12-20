@@ -70,6 +70,50 @@
 	margin-bottom: 12px;
 }
 
+.input-panel .input-field.radio input {
+	display: none;
+}
+
+.input-panel .input-field.radio {
+	display: flex;
+}
+
+.input-panel .input-field .radio-container {
+	display: flex;
+}
+
+.input-panel .input-field.radio input+label {
+	display: inline-block;
+	height: 24px;
+	line-height: 24px;
+	padding: 0 12px;
+	background: white;
+	cursor: pointer;
+	transition: all .3s;
+	text-align: center;
+	min-width: 69px;
+	box-sizing: border-box;
+}
+
+.input-panel .input-field.radio input+label:hover {
+	background: #eee;
+}
+
+.input-panel .input-field.radio input:first-of-type+label {
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
+	border-right: 2px solid #aaa;
+}
+
+.input-panel .input-field.radio input:last-of-type+label {
+	border-top-right-radius: 12px;
+	border-bottom-right-radius: 12px;
+}
+
+.input-panel .input-field.radio input:checked+label {
+	background: #aaa;
+}
+
 .input-panel .input-field.inline .label {
 	height: 26px;
 	line-height: 26px;
@@ -80,4 +124,10 @@
 	display: inline-block;
 	text-align: right;
 	margin-right: 8px;
+}
+
+.input-panel input,
+.input-panel select {
+	border: none;
+	min-width: 140px;
 }
