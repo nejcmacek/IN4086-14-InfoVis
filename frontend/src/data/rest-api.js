@@ -1,4 +1,7 @@
-export const host = "http://localhost:5003"
+import { monthValues } from "../utils/months.js"
+import { invertDateString } from "../utils/date-string.js"
+
+export const host = "http://localhost:5002"
 
 export function paramsToQueryString(args) {
 	return "?" + Object
@@ -29,4 +32,16 @@ export function getFlightHistory(tailNum) {
 /** @returns {Promise<string[]>} */
 export function getPlaneList() {
 	return getJsonData("planelist").then(t => t.tail_num)
+}
+
+export function getAirportDelayMonth(month) {
+	return getJsonData(`airportdelay?time=${month}`)
+}
+
+export function getAirportDelayDay(date) {
+	return getJsonData(`airportdelay?time=${date}`)
+}
+
+export function getAirportDelay(date) {
+	return getJsonData(`airportdelay?time=${date}`)
 }

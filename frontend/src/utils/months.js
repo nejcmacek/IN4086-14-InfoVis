@@ -1,7 +1,7 @@
 export const monthValues = [
 	"may", // 2018
 	"june", // 2018
-	"july", // 2018
+	"juli", // 2018
 	"august", // 2018
 	"september", // 2018
 	"october", // 2018

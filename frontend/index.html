@@ -15,6 +15,7 @@
 			<div class="adaptive-size-holder map-holder">
 				<img class="adaptive-size absolute-position usa-map" src="media/usa-map.svg" alt="Map of USA">
 				<div class="adaptive-size absolute-position" id="airport-map"></div>
+				<div class="hidden" id="airport-loading">Loading...</div>
 			</div>
 
 			<div class="info-holder">
@@ -31,13 +32,16 @@
 					<p>
 						<b>Number of Runways</b>: <span id="airport-info-panel-runways"></span>
 					</p>
+					<p>
+						<b>Delay</b>: <span id="airport-info-panel-delay"></span>
+					</p>
 
 					<div class="delay">
 						<div class="label">Amount of Delay (minutes)</div>
 						<div class="gradient-map"></div>
 						<div class="label-map">
 							<span>0</span>
-							<span>+60</span>
+							<span>+120</span>
 						</div>
 					</div>
 					<div class="input-panel">
@@ -45,13 +49,17 @@
 
 						<div class="input-field radio">
 							<span class="label">Time Unit</span>
-							<input type="radio" name="airport-time-unit" id="airport-unit-time-day" value="day"> <label for="airport-unit-time-day">Day</label>
-							<input type="radio" name="airport-time-unit" id="airport-unit-time-month" value="month"> <label for="airport-unit-time-month">Month</label>
+							<span class="radio-container">
+								<input type="radio" name="airport-time-unit" id="airport-unit-time-day" value="day"> <label for="airport-unit-time-day">Day</label>
+								<input type="radio" name="airport-time-unit" id="airport-unit-time-month" value="month"> <label for="airport-unit-time-month">Month</label>
+							</span>
 						</div>
 						<div class="input-field radio">
 							<span class="label">Time Frame</span>
-							<input type="radio" name="airport-time-frame" id="airport-frame-time-single" value="single"> <label for="airport-frame-time-single">Single</label>
-							<input type="radio" name="airport-time-frame" id="airport-frame-time-range" value="range"> <label for="airport-frame-time-range">Range</label>
+							<span class="radio-container">
+								<input type="radio" name="airport-time-frame" id="airport-frame-time-single" value="single"> <label for="airport-frame-time-single">Single</label>
+								<input type="radio" name="airport-time-frame" id="airport-frame-time-range" value="range"> <label for="airport-frame-time-range">Range</label>
+							</span>
 						</div>
 
 						<div class="input-control-holder" id="airport-input-control-month">
@@ -78,17 +86,17 @@
 							<div class="input-control day single" id="airport-input-control-day-single">
 								<div class="input-field inline">
 									<span class="label">Day:</span>
-									<input type="date" min="01-05-2018" max="30-04-2019" id="airport-input-field-day-single" />
+									<input type="date" min="2018-05-01" max="2019-04-30" id="airport-input-field-day-single" />
 								</div>
 							</div>
 							<div class="input-control day range" id="airport-input-control-day-range">
 								<div class="input-field inline">
 									<span class="label">Start:</span>
-									<input type="date" min="01-05-2018" max="30-04-2019" id="airport-input-field-day-range-start">
+									<input type="date" min="2018-05-01" max="2019-04-30" id="airport-input-field-day-range-start">
 								</div>
 								<div class="input-field inline">
 									<span class="label">End:</span>
-									<input type="date" min="01-05-2018" max="30-04-2019" id="airport-input-field-day-range-end">
+									<input type="date" min="2018-05-01" max="2019-04-30" id="airport-input-field-day-range-end">
 								</div>
 								<div class="input-field trackbar" id="airport-day-range-trackbar"></div>
 							</div>

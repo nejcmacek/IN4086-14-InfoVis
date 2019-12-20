@@ -33,3 +33,7 @@ interface ResponseAirportList {
 interface RequestFlightHistory {
 	tail_num: string
 }
+
+interface DelayData {
+	[number: string]: number
+}

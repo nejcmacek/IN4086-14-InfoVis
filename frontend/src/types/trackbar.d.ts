@@ -4,6 +4,7 @@ interface TrackbarOptions {
 	items?: string[]
 	step?: number
 	value?: number
+	playDelay?: number
 }
 
 interface TrackbarEvent {
