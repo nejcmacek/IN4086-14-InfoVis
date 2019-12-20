@@ -51,7 +51,7 @@ class DataHandler():
     def plane_list(self):
         return {'tail_num': sorted(self.planes.index.tolist())}
 
-    def airport_delay(self, time):
+    def get_airport_delay(self, time):
         return self.airport_delay[time].to_dict()
 
     def airport_delay_types(self, airport, time):
