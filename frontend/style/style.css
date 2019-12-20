@@ -3,6 +3,8 @@
 @import "./display-airports.css";
 @import "./display-flight.css";
 @import "./trackbar.css";
+@import "./overlay-loading.css";
+@import "./overlay-error.css";
 
 body {
 	margin: 0;

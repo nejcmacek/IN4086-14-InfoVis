@@ -8,7 +8,32 @@
 </head>
 
 <body>
-	<div class="holder" id="holder-ui">
+	<main class="holder" id="holder-ui">
+
+
+		<div id="overlay-loading" class="screen-overlay">
+			<div class="title-bar">
+				<div class="loading-holder">
+					<div class="loading-div"></div>
+				</div>
+				<h1>Loading...</h1>
+			</div>
+			<p class="text">
+				Please wait while load the data.<br>This might take a minute or two.
+			</p>
+		</div>
+
+		<div id="overlay-error" class="screen-overlay hidden">
+			<div class="container">
+				<div class="big-sad-smiley">:(</div>
+				<div>
+					<h1>Oh no!</h1>
+					<p>
+						An unknown error has occurred.<br>This may be either the backend server shutting down or the website malfunctioning.<br>Please refer to the console log for more details.
+					</p>
+				</div>
+			</div>
+		</div>
 
 
 		<div class="holder display-panel display-airports" id="panel-airports">
@@ -153,7 +178,7 @@
 				</select>
 			</div>
 		</div>
-	</div>
+	</main>
 
 
 </body>

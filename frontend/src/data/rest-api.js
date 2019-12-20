@@ -17,9 +17,17 @@ export function getUrl(path, args) {
 	return url
 }
 
+function onError(error) {
+	throw error
+}
+
+export function doFetch(url) {
+	return fetch(url).catch(t => onError(t))
+}
+
 export function getJsonData(path, args) {
 	const url = getUrl(path, args)
-	const response = fetch(url)
+	const response = doFetch(url)
 		.then(t => t.json())
 	return response
 }
@@ -44,4 +52,8 @@ export function getAirportDelayDay(date) {
 
 export function getAirportDelay(date) {
 	return getJsonData(`airportdelay?time=${date}`)
+}
+
+export function waitLoading() {
+	return doFetch(getUrl("loadingwait")).then(() => null)
 }
