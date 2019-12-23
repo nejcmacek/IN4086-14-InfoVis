@@ -1,8 +1,9 @@
-import * as adaptiveSize from "./ui/adaptive-size.js"
-import * as adaptiveDisplay from "./ui/adaptive-display.js"
-import DisplayFlight from "./display-flight/display-flight.js"
-import DisplayAirports from "./display-airports/display-airports.js"
 import { waitLoading } from "./data/rest-api.js"
+import DisplayAirports from "./display-airports/display-airports.js"
+import DisplayFlight from "./display-flight/display-flight.js"
+import * as adaptiveDisplay from "./ui/adaptive-display.js"
+import * as adaptiveSize from "./ui/adaptive-size.js"
+import InputControl from "./ui/input-control.js"
 import { waitTimeout } from "./utils/misc.js"
 
 function errorHandler() {
@@ -11,12 +12,21 @@ function errorHandler() {
 
 async function app() {
 	await waitLoading()
-	const da = new DisplayAirports()
-	const df = new DisplayFlight()
+
 	adaptiveSize.init()
+	// create controls
+	const ic = new InputControl()	
+	const da = new DisplayAirports(ic)
+	const df = new DisplayFlight()
+	ic.init()
+	da.init()
+	df.init()
+	
+	// attach global hooks
 	adaptiveDisplay.init(da, df)
+
 	await waitTimeout(50) // wait for UI to initialise
-	document.getElementById("overlay-loading").remove()
+	document.getElementById("overlay-loading").remove() // remove the loading overlay
 }
 
 function init() {

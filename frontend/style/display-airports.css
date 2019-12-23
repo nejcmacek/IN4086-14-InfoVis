@@ -1,4 +1,4 @@
-#panel-airports .gradient-map {
+#airports-info-panel .gradient-map {
 	background: linear-gradient(to right, white 0%, red 100%);
 }
 
@@ -70,6 +70,3 @@
 	margin-top: -4px;
 }
 
-#panel-airports .input-panel {
-	min-height: 250px;
-}

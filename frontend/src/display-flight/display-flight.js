@@ -1,8 +1,9 @@
 import airlines from "../data/airlines.js"
 import airportMap from "../data/airport-map.js"
 import { getFlightHistory, getPlaneList } from "../data/rest-api.js"
-import { animationFrameLoopRelativeTime, reduceAverage } from "../utils/misc.js"
-import { allDates, getDatesInBetween, firstDate, lastDate } from "../utils/date-string.js"
+import * as adaptiveSize from "../ui/adaptive-size.js"
+import { allDates, firstDate, getDatesInBetween, lastDate } from "../utils/date-string.js"
+import { reduceAverage } from "../utils/misc.js"
 
 const airportFillStyle = "black"
 const airportRadius = 3
@@ -108,6 +109,12 @@ export default class DisplayFlight {
 
 		// apply global settings
 		this.ctx.lineCap = "round"
+
+		// attach listeners
+		adaptiveSize.registerListener("flight-canvas", () => {
+			if (this.data)
+				this.renderFlightData(this.data)
+		})
 	}
 
 	async displayFlight(flight) {

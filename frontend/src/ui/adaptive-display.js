@@ -1,3 +1,5 @@
+import * as adaptiveSize from "./adaptive-size.js"
+
 const inputSelect = document.getElementById("input-display-type")
 let display
 let displayAirports
@@ -20,8 +22,7 @@ export function showDisplayFlight() {
 }
 
 function onInputSelectChange() {
-	const value = inputSelect.value
-	if (value === "airports") {
+	if (inputSelect.value === "airports") {
 		showDisplayAirports()
 		displayFlight.deactivated()
 		displayAirports.activated()
@@ -30,13 +31,13 @@ function onInputSelectChange() {
 		displayAirports.deactivated()
 		displayFlight.activated()
 	}
+
+	adaptiveSize.rescale()
 }
 
 export function init(da, df) {
 	displayAirports = da
 	displayFlight = df
-	displayAirports.init()
-	displayFlight.init()
 
 	inputSelect.addEventListener("change", onInputSelectChange)
 	onInputSelectChange()

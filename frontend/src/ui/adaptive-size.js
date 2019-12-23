@@ -60,7 +60,7 @@ export function rescale() {
 				const listener = listeners[listenerName]
 				if (listener)
 					listener({ height: heightItem, width: widthItem })
-		}
+			}
 		}
 
 	}
@@ -68,6 +68,5 @@ export function rescale() {
 
 export function init() {
 	findElements()
-	rescale()
 	window.addEventListener("resize", rescale)
 }

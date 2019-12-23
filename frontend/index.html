@@ -11,6 +11,8 @@
 	<main class="holder" id="holder-ui">
 
 
+		<!-- #region overlays -->
+
 		<div id="overlay-loading" class="screen-overlay">
 			<div class="title-bar">
 				<div class="loading-holder">
@@ -35,143 +37,195 @@
 			</div>
 		</div>
 
+		<!-- #endregion -->
 
-		<div class="holder display-panel display-airports" id="panel-airports">
-			<div class="adaptive-size-holder map-holder">
+
+		<div class="holder display-panel">
+
+
+			<!-- #region map -->
+
+			<!-- airports map -->
+			<div class="display-airports adaptive-size-holder map-holder">
 				<img class="adaptive-size absolute-position usa-map" src="media/usa-map.svg" alt="Map of USA">
 				<div class="adaptive-size absolute-position" id="airport-map"></div>
 				<div class="hidden big-loading-label" id="airport-loading">Loading...</div>
 			</div>
 
+			<!-- flight map -->
+			<div class="display-flight adaptive-size-holder map-holder">
+				<img class="adaptive-size absolute-position usa-map" src="media/usa-map.svg" alt="Map of USA">
+				<canvas class="adaptive-size absolute-position" id="flight-canvas" resize-listener="flight-canvas"></canvas>
+				<div class="hidden big-loading-label" id="flight-loading">Loading...</div>
+			</div>
+
+			<!-- #endregion -->
+
+
+			<!-- #region side panel -->
+
 			<div class="info-holder">
 				<div class="info-holder-pre"></div>
 				<div class="info-holder-content">
 
-					<p class="title">Relevant Airport Information</p>
-					<p>
-						<b>Airport</b>: <span id="airport-info-panel-airport"></span>
-					</p>
-					<p>
-						<b>City, State</b>: <span id="airport-info-panel-city-state"></span>
-					</p>
-					<p>
-						<b>Number of Runways</b>: <span id="airport-info-panel-runways"></span>
-					</p>
-					<p>
-						<b>Delay</b>: <span id="airport-info-panel-delay"></span>
-					</p>
 
-					<div class="delay">
-						<div class="label">Amount of Delay (minutes)</div>
-						<div class="gradient-map"></div>
-						<div class="label-map">
-							<span>0</span>
-							<span>+120</span>
+					<!-- #region info panel-->
+
+					<!-- airports info -->
+					<div class="display-airports" id="airports-info-panel">
+						<p class="title">Relevant Airport Information</p>
+						<p>
+							<b>Airport</b>: <span id="airport-info-panel-airport"></span>
+						</p>
+						<p>
+							<b>City, State</b>: <span id="airport-info-panel-city-state"></span>
+						</p>
+						<p>
+							<b>Number of Runways</b>: <span id="airport-info-panel-runways"></span>
+						</p>
+						<p>
+							<b>Delay</b>: <span id="airport-info-panel-delay"></span>
+						</p>
+						<div class="delay">
+							<div class="label">Amount of Delay (minutes)</div>
+							<div class="gradient-map"></div>
+							<div class="label-map">
+								<span>0</span>
+								<span>+120</span>
+							</div>
 						</div>
 					</div>
-					<div class="input-panel">
+
+					<!-- flight info -->
+					<div class="display-flight" id="flight-info-panel">
+						<p class="title">Relevant Flight Information</p>
+						<p>
+							<b>Airline</b>: <span id="flight-info-panel-airline"></span>
+						</p>
+						<p>
+							<b>Type of Aircraft</b>: <span id="flight-info-panel-aircraft"></span>
+						</p>
+						<p>
+							<b>Possible Number of Passengers</b>: <span id="flight-info-panel-passengers"></span>
+						</p>
+						<div class="delay">
+							<div class="label">Amount of Delay (minutes)</div>
+							<div class="gradient-map"></div>
+							<div class="label-map">
+								<span>-60</span>
+								<span>0</span>
+								<span>+60</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- #endregion -->
+
+
+					<!-- #region input panel -->
+
+					<div id="input-panel">
 						<p class="title">Display Settings</p>
 
 						<div class="input-field radio">
 							<span class="label">Time Unit:</span>
 							<span class="radio-container">
-								<input type="radio" name="airport-time-unit" id="airport-unit-time-day" value="day"> <label for="airport-unit-time-day">Day</label>
-								<input type="radio" name="airport-time-unit" id="airport-unit-time-month" value="month"> <label for="airport-unit-time-month">Month</label>
+								<input type="radio" name="ui-time-unit" id="ui-input-unit-time-day" value="day"> <label for="ui-input-unit-time-day">Day</label>
+								<input type="radio" name="ui-time-unit" id="ui-input-unit-time-month" value="month"> <label for="ui-input-unit-time-month">Month</label>
 							</span>
 						</div>
 						<div class="input-field radio">
 							<span class="label">Time Frame:</span>
 							<span class="radio-container">
-								<input type="radio" name="airport-time-frame" id="airport-frame-time-single" value="single"> <label for="airport-frame-time-single">Single</label>
-								<input type="radio" name="airport-time-frame" id="airport-frame-time-range" value="range"> <label for="airport-frame-time-range">Range</label>
+								<input type="radio" name="ui-time-frame" id="ui-input-frame-time-single" value="single"> <label for="ui-input-frame-time-single">Single</label>
+								<input type="radio" name="ui-time-frame" id="ui-input-frame-time-range" value="range"> <label for="ui-input-frame-time-range">Range</label>
 							</span>
 						</div>
 
-						<div class="input-control-holder" id="airport-input-control-month">
-							<div class="input-control month single" id="airport-input-control-month-single">
+						<!-- month input -->
+						<div class="input-control-holder" id="ui-input-control-month">
+							<div class="input-control month single" id="ui-input-control-month-single">
 								<div class="input-field inline">
 									<span class="label">Month:</span>
-									<select id="airport-input-field-month-single"></select>
+									<select id="ui-input-field-month-single"></select>
 								</div>
 							</div>
-							<div class="input-control month range" id="airport-input-control-month-range">
+							<div class="input-control month range" id="ui-input-control-month-range">
 								<div class="input-field inline">
 									<span class="label">Start:</span>
-									<select id="airport-input-field-month-range-start"></select>
+									<select id="ui-input-field-month-range-start"></select>
 								</div>
 								<div class="input-field inline">
 									<span class="label">End:</span>
-									<select id="airport-input-field-month-range-end"></select>
+									<select id="ui-input-field-month-range-end"></select>
 								</div>
-								<div class="input-field trackbar" id="airport-month-range-trackbar"></div>
+
+								<!-- airport data -->
+								<div class="display-airports">
+									<div class="input-field trackbar" id="airport-month-range-trackbar"></div>
+								</div>
+
+								<!-- flight data -->
+								<div class="display-flight">
+									<!-- TODO: FILL -->
+								</div>
+
 							</div>
 						</div>
 
-						<div class="input-control-holder" id="airport-input-control-day">
-							<div class="input-control day single" id="airport-input-control-day-single">
+						<!-- day input -->
+						<div class="input-control-holder" id="ui-input-control-day">
+							<div class="input-control day single" id="ui-input-control-day-single">
 								<div class="input-field inline">
 									<span class="label">Day:</span>
-									<input type="date" min="2018-05-01" max="2019-04-30" id="airport-input-field-day-single" />
+									<input type="date" min="2018-05-01" max="2019-04-30" id="ui-input-field-day-single" />
 								</div>
 							</div>
-							<div class="input-control day range" id="airport-input-control-day-range">
+							<div class="input-control day range" id="ui-input-control-day-range">
 								<div class="input-field inline">
 									<span class="label">Start:</span>
-									<input type="date" min="2018-05-01" max="2019-04-30" id="airport-input-field-day-range-start">
+									<input type="date" min="2018-05-01" max="2019-04-30" id="ui-input-field-day-range-start">
 								</div>
 								<div class="input-field inline">
 									<span class="label">End:</span>
-									<input type="date" min="2018-05-01" max="2019-04-30" id="airport-input-field-day-range-end">
+									<input type="date" min="2018-05-01" max="2019-04-30" id="ui-input-field-day-range-end">
 								</div>
-								<div class="input-field trackbar" id="airport-day-range-trackbar"></div>
+
+								<!-- airport data -->
+								<div class="display-airports">
+									<div class="input-field trackbar" id="airport-day-range-trackbar"></div>
+								</div>
+
+								<!-- flight data -->
+								<div class="display-flight">
+									<!-- TODO: FILL -->
+								</div>
+
 							</div>
 						</div>
 
 					</div>
-				</div>
-				<div class="info-holder-post"></div>
-			</div>
-		</div>
+
+					<!-- #endregion -->
 
 
-		<div class="holder display-panel display-flight" id="panel-flight">
-			<div class="adaptive-size-holder map-holder">
-				<img class="adaptive-size absolute-position usa-map" src="media/usa-map.svg" alt="Map of USA">
-				<canvas class="adaptive-size absolute-position" id="flight-canvas"></canvas>
-				<div class="hidden big-loading-label" id="flight-loading">Loading...</div>
-			</div>
-			<div class="info-holder">
-				<div class="info-holder-pre"></div>
-				<div class="info-holder-content">
-					<p class="title">Relevant Flight Information</p>
-					<p>
-						<b>Airline</b>: <span id="flight-info-panel-airline"></span>
-					</p>
-					<p>
-						<b>Type of Aircraft</b>: <span id="flight-info-panel-aircraft"></span>
-					</p>
-					<p>
-						<b>Possible Number of Passengers</b>: <span id="flight-info-panel-passengers"></span>
-					</p>
-					<div class="delay">
-						<div class="label">Amount of Delay (minutes)</div>
-						<div class="gradient-map"></div>
-						<div class="label-map">
-							<span>-60</span>
-							<span>0</span>
-							<span>+60</span>
-						</div>
-					</div>
 				</div>
 				<div class="info-holder-post"></div>
 			</div>
 
+			<!-- #endregion -->
+
 
 		</div>
+
+
+		<!-- #region top panel -->
+
 		<div class="panel-top">
 			<select id="input-display-type">
 				<option value="airports">Airport Delay</option>
-				<option value="flight" selected>Flight Delay</option><!--TODO: revert select option to airport delay-->
+				<option value="flight" selected>Flight Delay</option>
+				<!--TODO: revert select option to airport delay-->
 			</select>
 			<div class="display-flight">
 				<select id="input-plane">
@@ -179,9 +233,11 @@
 				</select>
 			</div>
 		</div>
+
+		<!-- #endregion -->
+
+
 	</main>
-
-
 </body>
 
 </html>

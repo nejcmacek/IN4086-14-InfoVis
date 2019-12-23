@@ -1,6 +1,6 @@
 import airports from "../data/airports.js"
-import InputControl from "./input-control.js"
 import AirportDelays from "./airport-delays.js"
+import AirportInputControl from "./input-control.js"
 
 const minAirportCursorDistance = 8
 const focusedAirportRange = 48
@@ -17,6 +17,10 @@ function getAirportName(airport) {
 
 
 export default class DisplayAirports {
+
+	constructor(inputControl) {
+		this.inputControl = inputControl
+	}
 
 	init() {
 		this.infoPanelAirport = document.getElementById("airport-info-panel-airport")
@@ -54,8 +58,8 @@ export default class DisplayAirports {
 		this.focusedAirport = null // airport in focus
 
 		this.airportDelays = new AirportDelays()
-		this.inputControl = new InputControl(this.airportDelays)
-		this.inputControl.init()
+		this.airportInputControl = new AirportInputControl(this.inputControl, this.airportDelays)
+		this.airportInputControl.init()
 		this.airportDelays.addEventListener(() => this.onCurrentDelayChange())
 	}
 
