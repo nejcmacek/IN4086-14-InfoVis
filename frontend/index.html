@@ -40,7 +40,7 @@
 			<div class="adaptive-size-holder map-holder">
 				<img class="adaptive-size absolute-position usa-map" src="media/usa-map.svg" alt="Map of USA">
 				<div class="adaptive-size absolute-position" id="airport-map"></div>
-				<div class="hidden" id="airport-loading">Loading...</div>
+				<div class="hidden big-loading-label" id="airport-loading">Loading...</div>
 			</div>
 
 			<div class="info-holder">
@@ -138,6 +138,7 @@
 			<div class="adaptive-size-holder map-holder">
 				<img class="adaptive-size absolute-position usa-map" src="media/usa-map.svg" alt="Map of USA">
 				<canvas class="adaptive-size absolute-position" id="flight-canvas"></canvas>
+				<div class="hidden big-loading-label" id="flight-loading">Loading...</div>
 			</div>
 			<div class="info-holder">
 				<div class="info-holder-pre"></div>
@@ -169,8 +170,8 @@
 		</div>
 		<div class="panel-top">
 			<select id="input-display-type">
-				<option value="airports" selected>Airport Delay</option>
-				<option value="flight">Flight Delay</option>
+				<option value="airports">Airport Delay</option>
+				<option value="flight" selected>Flight Delay</option><!--TODO: revert select option to airport delay-->
 			</select>
 			<div class="display-flight">
 				<select id="input-plane">

@@ -20,8 +20,9 @@ async function app() {
 }
 
 function init() {
-	window.addEventListener("error", errorHandler)
-	window.addEventListener("unhandledrejection", errorHandler)
+	// TODO: revert select option to airport delay
+	// window.addEventListener("error", errorHandler)
+	// window.addEventListener("unhandledrejection", errorHandler)
 	if (document.readyState !== "loading")
 		document.addEventListener("DOMContentLoaded", app)
 	else

@@ -62,3 +62,9 @@ body {
 .absolute-position {
 	position: absolute;
 }
+
+.big-loading-label {
+	font-size: 4em;
+	text-align: center;
+	position: absolute;
+}

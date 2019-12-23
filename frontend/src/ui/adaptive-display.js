@@ -39,7 +39,5 @@ export function init(da, df) {
 	displayFlight.init()
 
 	inputSelect.addEventListener("change", onInputSelectChange)
-	showDisplayAirports()
-
-	displayAirports.activated()
+	onInputSelectChange()
 }

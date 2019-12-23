@@ -28,6 +28,21 @@ export const monthDisplayStrings = [
 	"April 2019",
 ]
 
+export const monthEndDates = [
+	"2018-05-31",
+	"2018-06-30",
+	"2018-07-31",
+	"2018-08-31",
+	"2018-09-30",
+	"2018-10-31",
+	"2018-11-30",
+	"2018-12-31",
+	"2019-01-31",
+	"2019-02-28",
+	"2019-03-31",
+	"2019-04-30",
+]
+
 export function getMonthIndex(m) {
 	return monthValues.indexOf(m)
 }
@@ -56,4 +71,15 @@ export function getMonthsDisplayStringsInBetween(start, end) {
 	const s = monthValues.indexOf(start)
 	const e = monthValues.indexOf(end)
 	return monthDisplayStrings.slice(s, e + 1)
+}
+
+export function firstDayOfMonth(m) {
+	const index = monthValues.indexOf(m) + 1
+	const year = index <= 7 ? "2018" : "2019"
+	const month = index.toString().padStart(2, "0")
+	return `${year}-${month}-01`
+}
+
+export function lastDayOfMonth(m) {
+	return monthEndDates[monthValues.indexOf(m)]
 }

@@ -1,4 +1,4 @@
-import airports from "../data/airports.js"
+import airportMap from "../data/airport-map.js"
 import { getAirportDelay } from "../data/rest-api.js"
 
 const maxDelay = 120
@@ -16,10 +16,6 @@ export default class AirportDelays {
 	constructor() {
 		/** @type {CacheDelayData} */
 		this.delayCache = []
-		this.airportMap = {}
-		for (const airport of airports)
-			this.airportMap[airport.code] = airport
-
 		this.currentDate = null
 		this.isLoading = false
 		this.currentDelays = null
@@ -69,12 +65,12 @@ export default class AirportDelays {
 		this.currentDelays = data
 
 		for (let airportCode in data) {
-			const airport = this.airportMap[airportCode]
+			const airport = airportMap[airportCode]
 			if (!airport)
 				continue // we skip airports not on the map
 
 			/** @type {HTMLElement} */
-			const ring = this.airportMap[airportCode].ring
+			const ring = airportMap[airportCode].ring
 			const delay = data[airportCode]
 			ring.style.background = getDelayColorCode(delay)
 		}

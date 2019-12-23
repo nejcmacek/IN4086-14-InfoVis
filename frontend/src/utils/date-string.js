@@ -1,3 +1,8 @@
+export const firstDate = "2018-05-01"
+export const lastDate = "2019-04-30"
+export const allDates = getDatesInBetween(firstDate, lastDate)
+Object.freeze(allDates)
+
 export function compareDateStrings(a, b) {
 	return a.localeCompare(b)
 }

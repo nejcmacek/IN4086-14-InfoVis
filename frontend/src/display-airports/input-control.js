@@ -1,7 +1,6 @@
 import Trackbar from "../ui/trackbar.js"
 import { compareDateStrings, getDatesInBetween } from "../utils/date-string.js"
 import { compareMonths, countMonthsInBetween, getMonthDisplayString, getMonthsDisplayStringsInBetween, getMonthsInBetween, monthValues } from "../utils/months.js"
-import AirportDelays from "./airport-delays.js"
 
 const hiddenClass = "hidden"
 

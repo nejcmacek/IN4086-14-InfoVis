@@ -1,5 +1,3 @@
-import { monthValues } from "../utils/months.js"
-import { invertDateString } from "../utils/date-string.js"
 
 export const host = "http://localhost:5002"
 
@@ -32,9 +30,18 @@ export function getJsonData(path, args) {
 	return response
 }
 
+/** UNSAFE, use with care */
+export function getEvalJsonData(path, args) {
+	const url = getUrl(path, args)
+	const response = doFetch(url)
+		.then(t => t.text())
+		.then(t => eval(`(${t})`)) // UNSAFE, use with care
+	return response
+}
+
 /** @returns {Promise<FlightHistory>} */
 export function getFlightHistory(tailNum) {
-	return getJsonData("flighthistory", { tail_num: tailNum })
+	return getEvalJsonData("flighthistory", { tail_num: tailNum })
 }
 
 /** @returns {Promise<string[]>} */

@@ -36,17 +36,11 @@ class plane_list(Resource):
 
 class airport_delay(Resource):
     def get(self):
-        response = make_response(jsonify(dh.get_airport_delay(request.args["time"])))
-        response.headers['Access-Control-Allow-Origin'] = '*'
-
-        return response
+        return respond(dh.get_airport_delay(request.args["time"]))
 
 class airport_delay_types(Resource):
     def get(self):
-        response = make_response(jsonify(dh.airport_delay_types(request.args["airport"], request.args["time"])))
-        response.headers['Access-Control-Allow-Origin'] = '*'
-
-        return response
+        return respond(dh.airport_delay_types(request.args["airport"], request.args["time"]))
 
 class loading_wait(Resource):
     def get(self):
