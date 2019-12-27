@@ -1,7 +1,7 @@
 import airports from "../data/airports.js"
-import AirportDelays from "./airport-delays.js"
-import AirportControl from "./airport-control.js"
 import { airportsDisplaySettings as ads } from "../settings.js"
+import AirportControl from "./airport-control.js"
+import AirportDelays from "./airport-delays.js"
 
 function getAirportName(airport) {
 	const splitterIndex = airport.name.indexOf("|")

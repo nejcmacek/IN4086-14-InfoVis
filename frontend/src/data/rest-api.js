@@ -1,5 +1,4 @@
-
-export const host = "http://localhost:5002"
+import { hostAddress } from "../settings.js"
 
 export function paramsToQueryString(args) {
 	return "?" + Object
@@ -9,7 +8,7 @@ export function paramsToQueryString(args) {
 }
 
 export function getUrl(path, args) {
-	let url = host + (path.startsWith("/") ? path : "/" + path)
+	let url = hostAddress + (path.startsWith("/") ? path : "/" + path)
 	if (args)
 		url = url + paramsToQueryString(args)
 	return url

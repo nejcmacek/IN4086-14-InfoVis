@@ -1,6 +1,6 @@
 import airportMap from "../data/airport-map.js"
-import { reduceAverage, animationFrameLoopDetailed, animationFrameLoop, filterUnique } from "../utils/misc.js"
 import { flightDisplaySettings as fds } from "../settings.js"
+import { animationFrameLoopDetailed, filterUnique, reduceAverage } from "../utils/misc.js"
 
 function getDelayColor(delay) {
 	delay = Math.max(-60, Math.min(60, delay)) / 60

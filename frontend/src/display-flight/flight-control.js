@@ -1,10 +1,10 @@
+import { flightDisplaySettings as fds } from "../settings.js"
 import InputControl from "../ui/input-control.js"
 import Trackbar from "../ui/trackbar.js"
 import { getDatesInBetween } from "../utils/date-string.js"
 import EventListener from "../utils/event-listener.js"
 import { firstDayOfMonth, lastDayOfMonth } from "../utils/months.js"
 import DataManager from "./data-manager.js"
-import { flightDisplaySettings as fds } from "../settings.js"
 
 export default class FlightControl extends EventListener {
 

@@ -1,11 +1,10 @@
-
 /**
  * @template T
  * @param {T} value
  * @param {number} index
  * @param {T[]} array
  */
-export function filterUnique(value, index, array) { 
+export function filterUnique(value, index, array) {
 	return array.indexOf(value) === index
 }
 

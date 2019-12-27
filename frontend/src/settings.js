@@ -1,3 +1,5 @@
+export const hostAddress = "http://localhost:5002"
+
 export const airportsDisplaySettings = {
 	maxAirportDelay: 120,
 	minAirportCursorDistance: 8,
@@ -5,7 +7,7 @@ export const airportsDisplaySettings = {
 }
 
 export const flightDisplaySettings = {
-	flightHistoryPlayDelay: 700, // in milliseconds
+	flightHistoryPlayDelay: 600, // in milliseconds
 	dynamicDisplayHistorySize: 10,
 	airportDefaultFillStyle: "#000",
 	airportFadedFillStyle: "#444",
@@ -14,4 +16,9 @@ export const flightDisplaySettings = {
 	flightLineWideWidth: 6,
 	planeImageSize: 32,
 	defaultImageRotation: Math.PI / 2,
+}
+
+export const trackbarSettings = {
+	cursorSize: 24,
+	defaultPlayDelay: 100,
 }

@@ -1,8 +1,8 @@
 import { getPlaneList } from "../data/rest-api.js"
 import * as adaptiveSize from "../ui/adaptive-size.js"
+import InputControl from "../ui/input-control.js"
 import FlightControl from "./flight-control.js"
 import FlightRenderer from "./renderer.js"
-import InputControl from "../ui/input-control.js"
 
 export default class DisplayFlight {
 

@@ -1,5 +1,4 @@
-const cursorSize = 24
-const defaultPlayDelay = 100
+import { trackbarSettings } from "../settings.js"
 
 export default class Trackbar {
 
@@ -70,7 +69,7 @@ export default class Trackbar {
 		this.value = 0
 		this.playing = false
 		this.playInterval = NaN
-		this.playDelay = defaultPlayDelay;
+		this.playDelay = trackbarSettings.defaultPlayDelay;
 		this.setOptions(options)
 	}
 
@@ -228,8 +227,8 @@ export default class Trackbar {
 		if (e.target !== this.cursor) {
 			// move the cursor to the clicked area
 			const box = this.locBounds
-			const x = e.clientX - box.left - (cursorSize / 2)
-			const width = this.trackbar.clientWidth - cursorSize
+			const x = e.clientX - box.left - (trackbarSettings.cursorSize / 2)
+			const width = this.trackbar.clientWidth - trackbarSettings.cursorSize
 			const loc = x / width
 			this.setValue(loc)
 		}
@@ -270,7 +269,7 @@ export default class Trackbar {
 	}
 
 	setPlayDelay(delay) {
-		this.playDelay = delay || defaultPlayDelay
+		this.playDelay = delay || trackbarSettings.defaultPlayDelay
 	}
 
 	setPlaying(value) {
