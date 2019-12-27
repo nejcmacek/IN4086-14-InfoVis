@@ -1,3 +1,8 @@
 #flight-info-panel .gradient-map {
 	background: linear-gradient(to right, blue 0%, white 50%, red 100%);
 }
+
+#flight-label-empty {
+	text-align: center;
+	font-style: italic;
+}

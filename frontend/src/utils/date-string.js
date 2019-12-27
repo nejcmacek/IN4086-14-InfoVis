@@ -3,6 +3,9 @@ export const lastDate = "2019-04-30"
 export const allDates = getDatesInBetween(firstDate, lastDate)
 Object.freeze(allDates)
 
+const firstDateDate = toDate(firstDate)
+const lastDateDate = toDate(lastDate)
+
 export function compareDateStrings(a, b) {
 	return a.localeCompare(b)
 }
@@ -38,4 +41,9 @@ export function getDatesInBetween(a, b) {
 
 export function invertDateString(dateString) {
 	return dateString.split("-").reverse().join("-")
+}
+
+export function isValid(dateString) {
+	const date = toDate(dateString).getTime()
+	return date <= lastDateDate.getTime() && date >= firstDateDate.getTime()
 }

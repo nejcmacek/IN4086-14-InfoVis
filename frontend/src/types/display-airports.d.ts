@@ -1,10 +1,3 @@
 interface CacheDelayData {
-	[key: string]: CacheDelayDataItem
+	[key: string]: CacheItem<DelayData>
 }
-
-interface CacheDelayDataItem {
-	loading: boolean
-	promise: Promise<DelayData> | null
-	data: DelayData | null
-}
-

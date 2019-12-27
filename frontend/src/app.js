@@ -15,13 +15,13 @@ async function app() {
 
 	adaptiveSize.init()
 	// create controls
-	const ic = new InputControl()	
+	const ic = new InputControl()
 	const da = new DisplayAirports(ic)
-	const df = new DisplayFlight()
+	const df = new DisplayFlight(ic)
 	ic.init()
 	da.init()
-	df.init()
-	
+	await df.init()
+
 	// attach global hooks
 	adaptiveDisplay.init(da, df)
 
@@ -30,9 +30,8 @@ async function app() {
 }
 
 function init() {
-	// TODO: revert select option to airport delay
-	// window.addEventListener("error", errorHandler)
-	// window.addEventListener("unhandledrejection", errorHandler)
+	window.addEventListener("error", errorHandler)
+	window.addEventListener("unhandledrejection", errorHandler)
 	if (document.readyState !== "loading")
 		document.addEventListener("DOMContentLoaded", app)
 	else

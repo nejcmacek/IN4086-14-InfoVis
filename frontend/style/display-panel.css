@@ -91,6 +91,10 @@
 	display: flex;
 }
 
+label {
+	user-select: none;
+}
+
 #input-panel .input-field.radio input+label {
 	display: inline-block;
 	height: 24px;
@@ -138,4 +142,8 @@
 
 #input-panel {
 	min-height: 250px;
+}
+
+#input-panel .input-panel-extra {
+	margin-top: 12px;
 }

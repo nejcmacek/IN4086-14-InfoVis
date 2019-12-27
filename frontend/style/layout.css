@@ -59,6 +59,10 @@ body {
 	display: none !important;
 }
 
+.hidden-display-panel {
+	display: none !important;
+}
+
 .absolute-position {
 	position: absolute;
 }

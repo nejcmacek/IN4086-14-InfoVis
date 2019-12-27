@@ -8,17 +8,17 @@ let displayFlight
 export function showDisplayAirports() {
 	display = "airports"
 	for (const elt of document.getElementsByClassName("display-airports"))
-		elt.classList.remove("hidden")
+		elt.classList.remove("hidden-display-panel")
 	for (const elt of document.getElementsByClassName("display-flight"))
-		elt.classList.add("hidden")
+		elt.classList.add("hidden-display-panel")
 }
 
 export function showDisplayFlight() {
 	display = "flight"
 	for (const elt of document.getElementsByClassName("display-flight"))
-		elt.classList.remove("hidden")
+		elt.classList.remove("hidden-display-panel")
 	for (const elt of document.getElementsByClassName("display-airports"))
-		elt.classList.add("hidden")
+		elt.classList.add("hidden-display-panel")
 }
 
 function onInputSelectChange() {

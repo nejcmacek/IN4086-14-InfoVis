@@ -1,10 +1,7 @@
 import airports from "../data/airports.js"
 import AirportDelays from "./airport-delays.js"
-import AirportInputControl from "./input-control.js"
-
-const minAirportCursorDistance = 8
-const focusedAirportRange = 48
-
+import AirportControl from "./airport-control.js"
+import { airportsDisplaySettings as ads } from "../settings.js"
 
 function getAirportName(airport) {
 	const splitterIndex = airport.name.indexOf("|")
@@ -14,7 +11,6 @@ function getAirportName(airport) {
 	const name = `${fullName} (${airport.code})`
 	return name
 }
-
 
 export default class DisplayAirports {
 
@@ -50,24 +46,22 @@ export default class DisplayAirports {
 			a.ring = ring
 		}
 
-		this.captureMapBounds()
-		window.addEventListener("resize", () => this.captureMapBounds())
 		this.map.addEventListener("mousemove", e => this.onMouseMove(e))
 		this.map.addEventListener("click", () => this.onClick())
 		this.closestAirport = null // airport closes to the cursor
 		this.focusedAirport = null // airport in focus
 
 		this.airportDelays = new AirportDelays()
-		this.airportInputControl = new AirportInputControl(this.inputControl, this.airportDelays)
-		this.airportInputControl.init()
+		this.airportControl = new AirportControl(this.inputControl, this.airportDelays)
+		this.airportControl.init()
 		this.airportDelays.addEventListener(() => this.onCurrentDelayChange())
 	}
 
-	getMouseEventMapCoords(e) {
+	getMouseEventMapCoords(e, mapBounds) {
 		const height = this.map.clientHeight
 		const width = this.map.clientWidth
-		const x = (e.clientX - this.mapBounds.left) / width
-		const y = (e.clientY - this.mapBounds.top) / height
+		const x = (e.clientX - mapBounds.left) / width
+		const y = (e.clientY - mapBounds.top) / height
 		return { x, y }
 	}
 
@@ -76,7 +70,7 @@ export default class DisplayAirports {
 		let hide = false
 
 		if (this.focusedAirport && this.closestAirport) {
-			const threshold = (focusedAirportRange / 2) ** 2
+			const threshold = (ads.focusedAirportRange / 2) ** 2
 			const height = this.map.clientHeight
 			const width = this.map.clientWidth
 			const dx = this.focusedAirport.lat - this.closestAirport.lat
@@ -90,7 +84,8 @@ export default class DisplayAirports {
 
 	/** @param {MouseEvent} e */
 	onMouseMove(e) {
-		const { x, y } = this.getMouseEventMapCoords(e)
+		const mapBounds = this.map.getBoundingClientRect()
+		const { x, y } = this.getMouseEventMapCoords(e, mapBounds)
 
 		const distances = airports.map(airport => ({
 			airport,
@@ -98,7 +93,7 @@ export default class DisplayAirports {
 		}));
 		const closest = distances.reduce(
 			(p, n) => p.dist < n.dist ? p : n,
-			{ airport: null, dist: minAirportCursorDistance }
+			{ airport: null, dist: ads.minAirportCursorDistance }
 		)
 
 		this.setClosestAirport(closest.airport)
@@ -158,10 +153,6 @@ export default class DisplayAirports {
 		return this.focusedAirport || this.closestAirport || null
 	}
 
-	captureMapBounds() {
-		this.mapBounds = this.map.getBoundingClientRect()
-	}
-
 	onCurrentDelayChange() {
 		const airport = this.getDisplayedAirport()
 		if (airport)
@@ -174,6 +165,7 @@ export default class DisplayAirports {
 	deactivated() {
 		this.setClosestAirport(null)
 		this.setFocusedAirport(null)
+		this.airportControl.stop()
 	}
 
 }

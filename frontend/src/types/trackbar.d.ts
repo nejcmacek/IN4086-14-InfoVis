@@ -1,7 +1,7 @@
 interface TrackbarOptions {
 	steps?: number
 	labels?: string[]
-	items?: string[]
+	items?: any[]
 	step?: number
 	value?: number
 	playDelay?: number

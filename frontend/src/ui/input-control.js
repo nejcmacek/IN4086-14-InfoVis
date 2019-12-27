@@ -1,4 +1,4 @@
-import { compareDateStrings } from "../utils/date-string.js"
+import { compareDateStrings, isValid } from "../utils/date-string.js"
 import EventListener from "../utils/event-listener.js"
 import { compareMonths, getMonthDisplayString, monthValues } from "../utils/months.js"
 
@@ -57,7 +57,6 @@ export default class InputControl extends EventListener {
 		/** @type {DisplayType} */
 		this.selectedDisplayType = null
 
-		// TODO: fill <select> fields
 		for (const select of [this.inputMonthSingle, this.inputMonthRangeStart, this.inputMonthRangeEnd,]) {
 			for (const month of monthValues) {
 				const option = document.createElement("option")
@@ -95,9 +94,15 @@ export default class InputControl extends EventListener {
 		}
 	}
 
-	/** @param {DisplayType} displayType */
+	/** @param {DisplayType} [displayType] */
 	isInitialised(displayType) {
-		return !!this.getValue(displayType)
+		if (displayType === undefined) {
+			if (!this.selectedDisplayType)
+				return false
+			return !!this.getValue(this.selectedDisplayType)
+		} else {
+			return !!this.getValue(displayType)
+		}
 	}
 
 	onDisplayChanged() {
@@ -192,7 +197,7 @@ export default class InputControl extends EventListener {
 
 	onChangeDaySingle() {
 		const value = this.inputDaySingle.value
-		if (value) {
+		if (value && isValid(value)) {
 			this.valueDaySingle = value
 			this.onValueChanged("day-single", value)
 		}
@@ -200,7 +205,7 @@ export default class InputControl extends EventListener {
 
 	onChangeDayRangeStart() {
 		const value = this.inputDayRangeStart.value
-		if (!this.inputDayRangeEnd.value || !value)
+		if (!this.inputDayRangeEnd.value || !value || !isValid(value))
 			return
 
 		if (compareDateStrings(this.inputDayRangeEnd.value, value) < 0)
@@ -212,7 +217,7 @@ export default class InputControl extends EventListener {
 
 	onChangeDayRangeEnd() {
 		const value = this.inputDayRangeEnd.value
-		if (!this.inputDayRangeStart.value || !value)
+		if (!this.inputDayRangeStart.value || !value || !isValid(value))
 			return
 
 		if (compareDateStrings(this.inputDayRangeStart.value, value) > 0)

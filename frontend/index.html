@@ -141,6 +141,13 @@
 								<input type="radio" name="ui-time-frame" id="ui-input-frame-time-range" value="range"> <label for="ui-input-frame-time-range">Range</label>
 							</span>
 						</div>
+						<div class="input-field radio display-flight">
+							<span class="label">Dynamics:</span>
+							<span class="radio-container">
+								<input type="radio" name="flight-dynamics" id="flight-dynamics-static" value="static" checked> <label for="flight-dynamics-static">Static</label>
+								<input type="radio" name="flight-dynamics" id="flight-dynamics-dynamic" value="range"> <label for="flight-dynamics-dynamic">Dynamic</label>
+							</span>
+						</div>
 
 						<!-- month input -->
 						<div class="input-control-holder" id="ui-input-control-month">
@@ -163,11 +170,6 @@
 								<!-- airport data -->
 								<div class="display-airports">
 									<div class="input-field trackbar" id="airport-month-range-trackbar"></div>
-								</div>
-
-								<!-- flight data -->
-								<div class="display-flight">
-									<!-- TODO: FILL -->
 								</div>
 
 							</div>
@@ -196,13 +198,14 @@
 									<div class="input-field trackbar" id="airport-day-range-trackbar"></div>
 								</div>
 
-								<!-- flight data -->
-								<div class="display-flight">
-									<!-- TODO: FILL -->
-								</div>
-
 							</div>
 						</div>
+
+						<div id="flight-trackbar-holder" class="input-panel-extra display-flight hidden">
+							<div id="flight-trackbar" class="loading-trackbar"></div>
+						</div>
+
+						<div id="flight-label-empty" class="display-flight input-panel-extra hidden">No flights in selected time period.</div>
 
 					</div>
 
@@ -223,9 +226,8 @@
 
 		<div class="panel-top">
 			<select id="input-display-type">
-				<option value="airports">Airport Delay</option>
-				<option value="flight" selected>Flight Delay</option>
-				<!--TODO: revert select option to airport delay-->
+				<option value="airports" selected>Airport Delay</option>
+				<option value="flight">Flight Delay</option>
 			</select>
 			<div class="display-flight">
 				<select id="input-plane">

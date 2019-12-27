@@ -76,6 +76,8 @@ export default class Trackbar {
 
 	/** @param {TrackbarOptions} [options] */
 	setOptions(options) {
+		this.setPlaying(false)
+
 		if (typeof options.playDelay === "number")
 			this.setPlayDelay(options.playDelay)
 
@@ -91,7 +93,7 @@ export default class Trackbar {
 			this.items = options.items || null
 			this.labels = options.labels || null
 
-			// update label dispaly
+			// update label display
 			if (this.labels)
 				this.label.classList.remove("hidden")
 			else
@@ -203,9 +205,13 @@ export default class Trackbar {
 
 		step = Math.max(0, Math.min(step, this.steps - 1))
 		this.step = step
-		this.value = step / (this.steps - 1)
+		this.value = step / (this.steps - 1) || 0
 		this.updateUIElements()
 		this.onChange()
+	}
+
+	focus() {
+		this.trackbar.focus()
 	}
 
 	/** @param {MouseEvent} e */
@@ -215,7 +221,7 @@ export default class Trackbar {
 
 		e.preventDefault()
 		this.startMouseTracking()
-		this.trackbar.focus()
+		this.focus()
 		this.locMouseX = e.clientX
 		this.locBounds = this.trackbar.getBoundingClientRect()
 
@@ -259,6 +265,7 @@ export default class Trackbar {
 	}
 
 	onPlayClick() {
+		this.focus()
 		this.togglePlaying()
 	}
 
@@ -304,12 +311,11 @@ export default class Trackbar {
 	}
 
 	canPlay() {
-		return this.hasSteps()
+		return this.hasSteps() && this.steps > 1
 	}
 
 	/** @param {KeyboardEvent} e */
 	onKeyDown(e) {
-		console.log(e)
 		switch (e.keyCode) {
 			case 37: // left
 				if (this.hasSteps())

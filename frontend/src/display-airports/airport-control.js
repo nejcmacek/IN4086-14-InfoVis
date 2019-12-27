@@ -7,7 +7,7 @@ import AirportDelays from "./airport-delays.js"
 
 const hiddenClass = "hidden"
 
-export default class AirportInputControl extends EventListener {
+export default class AirportControl extends EventListener {
 
 	constructor(inputControl, airportDelays) {
 		super()
@@ -137,6 +137,11 @@ export default class AirportInputControl extends EventListener {
 
 	displayDay(value) {
 		this.airportDelays.displayDate(value)
+	}
+
+	stop() {
+		this.trackbarDayRange.setPlaying(false)
+		this.trackbarMonthRange.setPlaying(false)
 	}
 
 }	

@@ -1,10 +1,9 @@
 import airportMap from "../data/airport-map.js"
 import { getAirportDelay } from "../data/rest-api.js"
-
-const maxDelay = 120
+import { airportsDisplaySettings as ads } from "../settings.js"
 
 function getDelayColorCode(value) {
-	value = value / maxDelay
+	value = value / ads.maxAirportDelay
 	value = Math.max(0, Math.min(1, value))
 	const hex = Math.round(((1 - value) * 255))
 	const code = hex.toString(16).padStart(2, "0")

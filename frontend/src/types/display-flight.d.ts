@@ -1,5 +1,7 @@
-interface PlaneDateMapping {
-	[plane: string]: PlaneData
+type DisplayDynamics = "static" | "dynamic"
+
+interface PlaneDataMapping {
+	[plane: string]: CacheItem<PlaneData>
 }
 
 interface PlaneData {
@@ -28,6 +30,6 @@ interface PlaneSchedule {
 
 interface PlaneDrawData {
 	current: Flight
-	progress: number
 	history: Flight[]
+	time: number
 }
