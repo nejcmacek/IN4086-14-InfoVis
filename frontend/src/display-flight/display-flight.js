@@ -67,8 +67,8 @@ export default class DisplayFlight {
 			return
 		}
 
-		this.infoPanelAircraft.innerText = this.flightControl.planeData.carrier
-		this.infoPanelAirline.innerText = this.flightControl.planeData.model
+		this.infoPanelAircraft.innerText = this.flightControl.planeData.model
+		this.infoPanelAirline.innerText = this.flightControl.planeData.carrier
 		this.infoPanelPassengers.innerText = this.flightControl.planeData.passengers
 
 		if (!this.flightControl.hasContent()) {
