@@ -181,6 +181,7 @@ export default class DisplayAirports {
 	isPlotLinkEnabled() {
 		return !!this.getDisplayedAirport()
 			&& this.inputControl.isInitialised()
+			&& this.inputControl.selectedTimeFrame === "range"
 	}
 
 	getPlotLinkData() {
