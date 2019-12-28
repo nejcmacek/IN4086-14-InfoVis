@@ -6,6 +6,12 @@ export function showAirportDelayPlot(airport, start, end) {
 	return window.open(`plot/index.html?airport=${airport}&start=${start}&end=${end}`)
 }
 
+/** @param {HTMLElement} element */
+export function emptyElement(element) {
+	while (element.firstChild)
+		element.firstChild.remove()
+}
+
 /**
  * @template T
  * @param {T} value

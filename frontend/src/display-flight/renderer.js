@@ -135,21 +135,21 @@ export default class FlightRenderer {
 	async renderDynamic(drawData, retainProgress = false, maxFlightHistorySize = Infinity) {
 		this.drawData = drawData
 
+		// prepare assets
+		const airports = drawData.history
+			.flatMap(t => [t.origin, t.destination])
+			.filter(filterUnique)
+
 		if (retainProgress && this.drawData === drawData) {
 			// don't start an animation loop, just draw the data
 			if (this.animationComplete)
-				this.renderFlightProgress(drawData, 1)
+				this.renderFlightProgress(drawData, airports, 1, maxFlightHistorySize)
 			// else { the animation is already in progress }
 			return
 		}
 
 		// stop the previous animation loop (we're starting a new one)
 		this.stopRendering()
-
-		// prepare assets
-		const airports = drawData.history
-			.flatMap(t => [t.origin, t.destination])
-			.filter(filterUnique)
 
 		// start the animation loop (and cancel the previous one, if active)
 		const animationLoop = animationFrameLoopDetailed()

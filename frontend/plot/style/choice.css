@@ -1,0 +1,46 @@
+.choice-holder {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	margin-right: 8px;
+}
+
+.choice-holder>.choice {
+	position: relative;
+	width: 150px;
+	text-align: center;
+	font-size: 1em;
+	text-transform: uppercase;
+	user-select: none;
+}
+
+.small .choice-holder>.choice {
+	width: 120px;
+}
+
+.choice-holder>.choice:not(.selected) {
+	cursor: pointer;
+}
+
+.choice-holder>.highlight {
+	position: absolute;
+	height: 75%;
+	width: 150px;
+	background: #eee;
+	border-radius: 9999px;
+	top: 12.5%;
+	left: 0;
+	transition: left .3s;
+}
+
+.small .choice-holder>.highlight {
+	width: 120px;
+}
+
+.choice-holder>.highlight.right {
+	left: 150px;
+}
+
+.small .choice-holder>.highlight.right {
+	left: 120px;
+}

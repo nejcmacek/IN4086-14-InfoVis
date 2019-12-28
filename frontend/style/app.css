@@ -1,0 +1,39 @@
+body {
+	background: #dadada;
+}
+
+.adaptive-size-holder {
+	align-items: center;
+	justify-content: center;
+	display: flex;
+}
+
+.panel-top {
+	z-index: 4;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.panel-top select {
+	width: 200px;
+	font-size: 1.2em;
+}
+
+.usa-map {
+	filter: brightness(0.65);
+}
+
+.big-loading-label {
+	font-size: 4em;
+	text-align: center;
+	position: absolute;
+}
+
+.hidden-display-panel {
+	display: none !important;
+}
+
+.invisible {
+	visibility: hidden;
+}
