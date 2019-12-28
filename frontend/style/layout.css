@@ -63,6 +63,10 @@ body {
 	display: none !important;
 }
 
+.invisible {
+	visibility: hidden;
+}
+
 .absolute-position {
 	position: absolute;
 }

@@ -37,3 +37,16 @@ interface RequestFlightHistory {
 interface DelayData {
 	[number: string]: number
 }
+
+interface AirportDelayTypes {
+	airport: string
+	time: string
+	total_delay: number
+	arrival_delay: number
+	carrier_delay: number
+	departure_delay: number
+	late_aircraft_delay: number
+	nas_delay: number
+	security_delay: number
+	weather_delay: number
+}

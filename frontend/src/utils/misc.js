@@ -1,4 +1,12 @@
 /**
+ * @param {string} airport Airport code
+ * @param {string} time Date or month
+ */
+export function showAirportDelayPlot(airport, start, end) {
+	return window.open(`plot/index.html?airport=${airport}&start=${start}&end=${end}`)
+}
+
+/**
  * @template T
  * @param {T} value
  * @param {number} index

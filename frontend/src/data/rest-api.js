@@ -56,8 +56,12 @@ export function getAirportDelayDay(date) {
 	return getJsonData(`airportdelay?time=${date}`)
 }
 
-export function getAirportDelay(date) {
-	return getJsonData(`airportdelay?time=${date}`)
+export function getAirportDelay(time) {
+	return getJsonData(`airportdelay?time=${time}`)
+}
+
+export function getAirportDelayType(airportCode, time) {
+	return getJsonData(`airportdelaytypes?airport=${airportCode}&time=${time}`)
 }
 
 export function waitLoading() {
