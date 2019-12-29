@@ -79,7 +79,7 @@ export default class InputControl extends EventListener {
 	}
 
 	/** @param {DisplayType} displayType */
-	getValue(displayType) {
+	getValue(displayType = this.selectedDisplayType) {
 		switch (displayType) {
 			case "day-single":
 				return this.valueDaySingle

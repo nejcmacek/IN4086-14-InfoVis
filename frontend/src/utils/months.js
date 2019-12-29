@@ -58,6 +58,10 @@ export const monthEndDates = [
 	"2019-04-30",
 ]
 
+export function isMonth(m) {
+	return monthValues.indexOf(m) >= 0
+}
+
 export function getMonthIndex(m) {
 	return monthValues.indexOf(m)
 }

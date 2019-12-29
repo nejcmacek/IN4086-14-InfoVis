@@ -1,0 +1,68 @@
+<html>
+
+<head>
+	<title>InfoVis Project - Airport Delay Plot</title>
+	<link rel="icon" href="../media/plane.png">
+	<link rel="stylesheet" href="style/index.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="module" src="src/app.js"></script>
+</head>
+
+<body>
+	<div class="holder" id="holder-ui">
+
+		<div id="overlay-loading" class="screen-overlay">
+			<div class="title-bar">
+				<div class="loading-holder">
+					<div class="loading-div"></div>
+				</div>
+				<h1>Loading...</h1>
+			</div>
+			<p class="text">
+				Please wait while we load the data.<br>This might take a while.
+			</p>
+		</div>
+
+		<div id="overlay-error" class="screen-overlay hidden">
+			<div class="container">
+				<div class="big-sad-smiley">:(</div>
+				<div>
+					<h1>Oh no!</h1>
+					<p>
+						An unknown error has occurred.<br>This may be either the backend server shutting down or the website malfunctioning.<br>Please refer to the console log for more details.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<main class="holder">
+
+			<div class="title">
+				<div class="title-shadow"></div>
+				<div class="title-content">
+					<h1>
+						<span id="title"></span>
+					</h1>
+					<div class="choice-holder">
+						<div class="highlight" id="choice-highlight"></div>
+						<div class="choice" id="choice-stack">Delay Reason</div>
+						<div class="choice" id="choice-line">Delay Type</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="content">
+				<div class="holder" id="plot-holder-stack">
+					<svg class="plot" id="plot-svg-stack"></svg>
+				</div>
+				<div class="holder" id="plot-holder-line">
+					<svg class="plot" id="plot-svg-line"></svg>
+				</div>
+			</div>
+
+		</main>
+
+	</div>
+</body>
+
+</html>

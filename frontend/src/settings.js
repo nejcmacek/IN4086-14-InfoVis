@@ -7,6 +7,7 @@ export const airportsDisplaySettings = {
 }
 
 export const flightDisplaySettings = {
+	maxFlightDelay: 60,
 	flightHistoryPlayDelay: 600, // in milliseconds
 	dynamicDisplayHistorySize: 10,
 	airportDefaultFillStyle: "#000",

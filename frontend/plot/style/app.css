@@ -1,0 +1,28 @@
+body.small {
+	font-size: 0.85em;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+}
+
+.content {
+	position: relative;
+	margin: 24px;
+	margin-top: 0;
+	flex: 1;
+}
+
+svg.plot .axis {
+	font-size: 0.8em;
+	color: rgba(0, 0, 0, 0.8);
+}
+
+svg.plot .axis-title {
+	text-rendering: optimizeLegibility;
+	font-size: 1em;
+	font-smooth: always;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}

@@ -1,9 +1,10 @@
 import airportMap from "../data/airport-map.js"
-import { flightDisplaySettings as fds } from "../settings.js"
+import { flightDisplaySettings as fds, flightDisplaySettings } from "../settings.js"
 import { animationFrameLoopDetailed, filterUnique, reduceAverage } from "../utils/misc.js"
 
 function getDelayColor(delay) {
-	delay = Math.max(-60, Math.min(60, delay)) / 60
+	const mfd = flightDisplaySettings.maxFlightDelay
+	delay = Math.max(-mfd, Math.min(mfd, delay)) / mfd
 	if (delay < 0) {
 		const code = Math.round((1 + delay) * 0xFF).toString(16).padStart(2, "0")
 		return `#${code}${code}FF`
@@ -14,7 +15,8 @@ function getDelayColor(delay) {
 }
 
 function getDelayColorRGB(delay) {
-	delay = Math.max(-60, Math.min(60, delay)) / 60
+	const mfd = flightDisplaySettings.maxFlightDelay
+	delay = Math.max(-mfd, Math.min(mfd, delay)) / mfd
 	if (delay < 0) {
 		const code = Math.round((1 + delay) * 0xFF)
 		return [code, code, 0xFF]
@@ -133,21 +135,21 @@ export default class FlightRenderer {
 	async renderDynamic(drawData, retainProgress = false, maxFlightHistorySize = Infinity) {
 		this.drawData = drawData
 
+		// prepare assets
+		const airports = drawData.history
+			.flatMap(t => [t.origin, t.destination])
+			.filter(filterUnique)
+
 		if (retainProgress && this.drawData === drawData) {
 			// don't start an animation loop, just draw the data
 			if (this.animationComplete)
-				this.renderFlightProgress(drawData, 1)
+				this.renderFlightProgress(drawData, airports, 1, maxFlightHistorySize)
 			// else { the animation is already in progress }
 			return
 		}
 
 		// stop the previous animation loop (we're starting a new one)
 		this.stopRendering()
-
-		// prepare assets
-		const airports = drawData.history
-			.flatMap(t => [t.origin, t.destination])
-			.filter(filterUnique)
 
 		// start the animation loop (and cancel the previous one, if active)
 		const animationLoop = animationFrameLoopDetailed()

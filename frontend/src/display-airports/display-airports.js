@@ -1,5 +1,7 @@
 import airports from "../data/airports.js"
 import { airportsDisplaySettings as ads } from "../settings.js"
+import InputControl from "../ui/input-control.js"
+import { showAirportDelayPlot } from "../utils/misc.js"
 import AirportControl from "./airport-control.js"
 import AirportDelays from "./airport-delays.js"
 
@@ -14,18 +16,22 @@ function getAirportName(airport) {
 
 export default class DisplayAirports {
 
+	/** @param {InputControl} inputControl */
 	constructor(inputControl) {
 		this.inputControl = inputControl
 	}
 
 	init() {
+		/** @type {HTMLDivElement} */
+		this.map = document.getElementById("airport-map")
 		this.infoPanelAirport = document.getElementById("airport-info-panel-airport")
 		this.infoPanelCityState = document.getElementById("airport-info-panel-city-state")
 		this.infoPanelRunways = document.getElementById("airport-info-panel-runways")
 		this.infoPanelDelay = document.getElementById("airport-info-panel-delay")
+		this.plotHolder = document.getElementById("airport-plot-holder")
+		this.plotLink = document.getElementById("airport-plot-link")
 
-		/** @type {HTMLDivElement} */
-		this.map = document.getElementById("airport-map")
+		// initialise airport map
 		this.elements = []
 		for (const a of airports) {
 			const div = document.createElement("div")
@@ -46,15 +52,36 @@ export default class DisplayAirports {
 			a.ring = ring
 		}
 
+		// add event listeners
 		this.map.addEventListener("mousemove", e => this.onMouseMove(e))
 		this.map.addEventListener("click", () => this.onClick())
+		this.plotLink.addEventListener("click", e => this.onClickLink(e))
+		this.inputControl.addEventListener("display-change", () => this.updatePlotLink())
+		this.inputControl.addEventListener("value-change", () => this.updatePlotLink())
+
+		// init processing data
 		this.closestAirport = null // airport closes to the cursor
 		this.focusedAirport = null // airport in focus
 
+		// initialise airport components
 		this.airportDelays = new AirportDelays()
 		this.airportControl = new AirportControl(this.inputControl, this.airportDelays)
 		this.airportControl.init()
 		this.airportDelays.addEventListener(() => this.onCurrentDelayChange())
+	}
+
+	/** @param {MouseEvent} e */
+	onClickLink(e) {
+		e.preventDefault()
+
+		const data = this.getPlotLinkData()
+		if (!data)
+			return
+
+		if (this.inputControl.selectedTimeFrame === "single")
+			showAirportDelayPlot(data.airport, data.time, data.time)
+		else
+			showAirportDelayPlot(data.airport, ...data.time)
 	}
 
 	getMouseEventMapCoords(e, mapBounds) {
@@ -111,7 +138,7 @@ export default class DisplayAirports {
 		this.closestAirport = closest
 
 		if (!this.focusedAirport)
-			this.setAirportDetails(closest)
+			this.updateAirportDetails()
 	}
 
 	setFocusedAirport(focused) {
@@ -124,10 +151,11 @@ export default class DisplayAirports {
 			focused.element.classList.add("focused")
 
 		this.focusedAirport = focused
-		this.setAirportDetails(focused)
+		this.updateAirportDetails()
 	}
 
-	setAirportDetails(airport) {
+	updateAirportDetails() {
+		const airport = this.getDisplayedAirport()
 		if (airport) {
 			this.infoPanelAirport.innerText = getAirportName(airport)
 			this.infoPanelCityState.innerText = airport.city
@@ -139,6 +167,7 @@ export default class DisplayAirports {
 			this.infoPanelRunways.innerText = ""
 			this.infoPanelDelay.innerText = ""
 		}
+		this.updatePlotLink()
 	}
 
 	setInfoPanelDelayText(airport) {
@@ -149,6 +178,30 @@ export default class DisplayAirports {
 			this.infoPanelDelay.innerText = ""
 	}
 
+	isPlotLinkEnabled() {
+		return !!this.getDisplayedAirport()
+			&& this.inputControl.isInitialised()
+			&& this.inputControl.selectedTimeFrame === "range"
+	}
+
+	getPlotLinkData() {
+		if (!this.isPlotLinkEnabled())
+			return
+
+		return {
+			airport: this.getDisplayedAirport().code,
+			time: this.inputControl.getValue(),
+		}
+	}
+
+	updatePlotLink() {
+		if (this.isPlotLinkEnabled())
+			this.plotHolder.classList.remove("invisible")
+		else
+			this.plotHolder.classList.add("invisible")
+	}
+
+	/** @return {Airport | null} */
 	getDisplayedAirport() {
 		return this.focusedAirport || this.closestAirport || null
 	}
