@@ -44,7 +44,7 @@ export default class FlightRenderer {
 		this.animationComplete = false
 
 		this.image = new Image()
-		this.image.src = "../../media/plane.svg"
+		this.image.src = "./media/plane.svg"
 	}
 
 	stopRendering() {
