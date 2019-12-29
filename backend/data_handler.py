@@ -55,7 +55,7 @@ class DataHandler():
         return self.airport_delay[time].to_dict()
 
     def airport_delay_types(self, airport, time):
-        return {'airport': airport, 'time': time,  'carrier_delay': self.carrier_delay.loc[airport, time], 'weather_delay': self.weather_delay.loc[airport, time],
+        return {'airport': airport, 'time': time, 'carrier_delay': self.carrier_delay.loc[airport, time], 'weather_delay': self.weather_delay.loc[airport, time],
                 'nas_delay': self.nas_delay.loc[airport, time], 'security_delay': self.security_delay.loc[airport, time],
                 'late_aircraft_delay': self.late_aircraft_delay.loc[airport, time], 'arrival_delay': self.arrival_delay.loc[airport, time],
                 'departure_delay': self.departure_delay.loc[airport, time], 'total_delay': self.airport_delay.loc[airport, time]}
