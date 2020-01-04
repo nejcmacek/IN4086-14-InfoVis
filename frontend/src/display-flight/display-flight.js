@@ -18,6 +18,8 @@ export default class DisplayFlight {
 		this.infoPanelAirline = document.getElementById("flight-info-panel-airline")
 		this.infoPanelAircraft = document.getElementById("flight-info-panel-aircraft")
 		this.infoPanelPassengers = document.getElementById("flight-info-panel-passengers")
+		this.infoPanelDelayHolder = document.getElementById("flight-info-panel-delay-holder")
+		this.infoPanelDelay = document.getElementById("flight-info-panel-delay")
 		this.labelLoading = document.getElementById("flight-loading")
 		this.labelNoFlights = document.getElementById("flight-label-empty")
 
@@ -63,6 +65,7 @@ export default class DisplayFlight {
 			this.infoPanelAircraft.innerText = ""
 			this.infoPanelAirline.innerText = ""
 			this.infoPanelPassengers.innerText = ""
+			this.infoPanelDelayHolder.classList.add("invisible")
 			this.renderer.clearCanvas()
 			return
 		}
@@ -73,19 +76,26 @@ export default class DisplayFlight {
 
 		if (!this.flightControl.hasContent()) {
 			this.labelNoFlights.classList.remove("hidden")
+			this.infoPanelDelayHolder.classList.add("invisible")
 			this.renderer.clearCanvas()
 			return
 		}
 
 		this.labelNoFlights.classList.add("hidden")
-		if (this.flightControl.dynamics === "static")
+		if (this.flightControl.dynamics === "static") {
 			this.renderer.renderStatic(this.flightControl.flights)
-		// else { this.onFlightChange will be triggered and render flights } 
+			this.infoPanelDelayHolder.classList.add("invisible")
+		} else {
+			this.infoPanelDelayHolder.classList.remove("invisible")
+			// this.onFlightChange will be triggered and render flights
+		}
+
 	}
 
 	/** @param {PlaneDrawData} drawData */
 	onFlightChange(drawData) {
 		this.renderer.renderDynamic(drawData, false, this.flightControl.flights.length)
+		this.infoPanelDelay.innerText = drawData.current.arrivalDelay + " min"
 	}
 
 	activated() {
