@@ -15,6 +15,7 @@ tsconfig.json
 
 # Python
 .pyc
+__pycache__
 
 # OS
 Thumbs.db
