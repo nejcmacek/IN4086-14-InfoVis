@@ -2,6 +2,10 @@ import math
 import glob
 import pandas as pd
 
+"""
+This file was used to calculate the average delay for each airport over all days, months and year.
+The result is saved in airport_delay.csv
+"""
 airports = pd.read_csv('other_data/airport_data.csv', index_col='airport')
 
 all_files = glob.glob(r'flight_data' + '/*.csv')

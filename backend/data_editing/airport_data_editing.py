@@ -1,5 +1,6 @@
 import pandas as pd
 
+""""This file was used to transfer information from a temporary file to the airports.csv file."""
 airports = pd.read_csv('other_data/airport_data.csv', index_col='airport')
 flights = pd.read_csv('flight_data/flights-2018-05.csv')
 

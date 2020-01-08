@@ -2,6 +2,12 @@ import math
 import glob
 import pandas as pd
 
+"""
+This file was used to calculate the average delay for each airport over all days, months and year.
+This is done for all types of delay.
+The code is very messy: this was not fixed since this script was only used once to create the new files.
+The result is saved in different delay files.
+"""
 airports = pd.read_csv('other_data/airport_data.csv', index_col='airport')
 arrival = airports.copy()
 departure = airports.copy()

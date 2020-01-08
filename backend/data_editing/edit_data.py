@@ -1,5 +1,6 @@
 import pandas as pd
 
+"""This file was used to fix a small bug in aircraft types."""
 def edit_aircraft_data():
     df = pd.read_csv("other_data/plane_data.csv")
 

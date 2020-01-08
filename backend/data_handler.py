@@ -19,8 +19,10 @@ class DataHandler():
         self.security_delay = pd.read_csv('other_data/security_delay.csv', index_col='airport')
         self.weather_delay = pd.read_csv('other_data/weather_delay.csv', index_col='airport')
 
-
-    """Finds a random tail number and returns the first amount flights of that plane plus some additional information"""
+    """
+    Filters all flights with a random tail_number.
+    Returns the first amount of flights with FL_DATE, ORIGIN, DEST, DEP_TIME, ARR_TIME, the tail number and the carrier.
+    """
     def random_flight_history(self, amount):
         flight = self.flights.sample(n=1)
         tail_number = flight['TAIL_NUM'].values[0]
@@ -33,6 +35,10 @@ class DataHandler():
 
         return {**{'tail_num': tail_number, 'op_carrier': carrier}, **selected_flights.to_dict('list'), **plane_info.to_dict()}
 
+    """
+    Filters all flights with the provided tail number
+    Returns the filtered flights with FL_DATE, ORIGIN, DEST, DEP_TIME, ARR_TIME, the tail number and the carrier.
+    """
     def flight_history(self, tail_number):
         selected_flights = self.flights[self.flights["TAIL_NUM"] == tail_number]
         carrier = selected_flights.sample(n=1)
@@ -45,19 +51,21 @@ class DataHandler():
         return {**{'tail_num': tail_number, 'op_carrier': carrier}, **selected_flights.to_dict('list'),
                 **plane_info.to_dict()}
 
+    """Returns all airports"""
     def airport_list(self):
         return self.airports.to_dict()
 
+    """Returns all planes"""
     def plane_list(self):
         return {'tail_num': sorted(self.planes.index.tolist())}
 
+    """Returns the delay of all airports for a given time"""
     def get_airport_delay(self, time):
         return self.airport_delay[time].to_dict()
 
+    """For all types of delays, return the average delay for a given airport and a given time."""
     def airport_delay_types(self, airport, time):
         return {'airport': airport, 'time': time, 'carrier_delay': self.carrier_delay.loc[airport, time], 'weather_delay': self.weather_delay.loc[airport, time],
                 'nas_delay': self.nas_delay.loc[airport, time], 'security_delay': self.security_delay.loc[airport, time],
                 'late_aircraft_delay': self.late_aircraft_delay.loc[airport, time], 'arrival_delay': self.arrival_delay.loc[airport, time],
                 'departure_delay': self.departure_delay.loc[airport, time], 'total_delay': self.airport_delay.loc[airport, time]}
-
-

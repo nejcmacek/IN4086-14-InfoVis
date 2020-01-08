@@ -3,7 +3,10 @@ import glob
 import urllib.request
 from urllib.error import URLError, HTTPError
 
-# This file created the aircraft data
+"""
+This file mined airport-data.com and retrieved all the informationa about aircraft.
+This information was saved in plane_data.csv
+"""
 
 def read_html(plane):
     try:
@@ -49,4 +52,3 @@ all_data.columns = ["model", "year_built", "type", "passengers", "engines", "eng
 print(all_data)
 
 export_csv = all_data.to_csv('unused_data/plane-data.csv', header=True)
-
