@@ -3,9 +3,13 @@ import { emptyElement } from "../../src/utils/misc.js"
 import makeLinePlot from "./line-plot.js"
 import makeStackPlot from "./stack-plot.js"
 
+// Website settings
 const viewportMargin = 356
 const margin = { top: 24, right: 170, bottom: 40, left: 50 }
 
+/** 
+ * This class manages the general display settings of the website, primarily user interaction.
+ */
 export default class Display {
 
 	/** 
@@ -18,6 +22,7 @@ export default class Display {
 	}
 
 	init() {
+		// get references to relevant items
 		this.plotStackHolder = document.getElementById("plot-holder-stack")
 		this.plotStackSvg = document.getElementById("plot-svg-stack")
 		this.plotLineHolder = document.getElementById("plot-holder-line")
@@ -53,17 +58,22 @@ export default class Display {
 		this.choiceLine.addEventListener("click", () => this.selectPlot("line"))
 	}
 
+	/** Renders the Delay Cause plot. */
 	renderStackPlot() {
 		emptyElement(this.plotStackSvg)
 		makeStackPlot(this.plotStackHolder, this.plotStackSvg, this.delays, margin)
 	}
 
+	/** Renders the Delay Type plot.. */
 	renderLinePlot() {
 		emptyElement(this.plotLineSvg)
 		makeLinePlot(this.plotLineHolder, this.plotLineSvg, this.delays, margin)
 	}
 
-	/** @param {PlotType} type */
+	/**
+	 * Called when the selection of the plot to display changes.
+	 * @param {PlotType} type 
+	 */
 	selectPlot(type) {
 		if (this.choice === type)
 			return
@@ -89,6 +99,7 @@ export default class Display {
 		this.sizeChanged = false
 	}
 
+	/** Handles window resizes. */
 	onResize() {
 		this.sizeChanged = true
 		this.updateTitleSize()
@@ -99,6 +110,7 @@ export default class Display {
 			this.renderLinePlot()
 	}
 
+	/** We have some adaptive title size, which helps with readability on smaller screens. */
 	updateTitleSize() {
 		const shouldBeSmall = this.titleSizeThreshold > window.innerWidth
 		if (this.small === shouldBeSmall)

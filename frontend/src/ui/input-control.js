@@ -4,8 +4,14 @@ import { compareMonths, getMonthDisplayString, monthValues } from "../utils/mont
 
 const hiddenClass = "hidden"
 
+/** 
+ * This component manages the basic input fields, shared by both Airport Delay and 
+ * Flight Delay screens. It emit appropriate events, which are used by each of the screens
+ * to display the correct data.
+ */
 export default class InputControl extends EventListener {
 
+	/** Initialises the component. */
 	init() {
 		// retrieve element references
 		this.inputUnitTimeDay = document.getElementById("ui-input-unit-time-day")
@@ -57,6 +63,7 @@ export default class InputControl extends EventListener {
 		/** @type {DisplayType} */
 		this.selectedDisplayType = null
 
+		// Fill in the <select> fields requiring a list of all months.
 		for (const select of [this.inputMonthSingle, this.inputMonthRangeStart, this.inputMonthRangeEnd,]) {
 			for (const month of monthValues) {
 				const option = document.createElement("option")
@@ -64,10 +71,11 @@ export default class InputControl extends EventListener {
 				option.innerText = getMonthDisplayString(month)
 				select.appendChild(option)
 			}
-			select.value = ""
+			select.value = "" // no month is currently selected
 		}
 	}
 
+	/** Gets the status of current input fields. */
 	getCurrentStatus() {
 		if (this.selectedDisplayType)
 			return {
@@ -78,7 +86,10 @@ export default class InputControl extends EventListener {
 			return null
 	}
 
-	/** @param {DisplayType} displayType */
+	/** 
+	 * Gets the value(s) of the selected display type.
+	 * @param {DisplayType} displayType Display Type. Defaults to the selected value of undefined.
+	 */
 	getValue(displayType = this.selectedDisplayType) {
 		switch (displayType) {
 			case "day-single":
@@ -94,7 +105,9 @@ export default class InputControl extends EventListener {
 		}
 	}
 
-	/** @param {DisplayType} [displayType] */
+	/** Check if all the input fields have been initialised.
+	 * @param {DisplayType} [displayType] 
+	 */
 	isInitialised(displayType) {
 		if (displayType === undefined) {
 			if (!this.selectedDisplayType)
@@ -105,6 +118,7 @@ export default class InputControl extends EventListener {
 		}
 	}
 
+	/** Fires the display-change event. */
 	onDisplayChanged() {
 		if (!this.selectedTimeUnit || !this.selectedTimeFrame)
 			return
@@ -121,6 +135,7 @@ export default class InputControl extends EventListener {
 	}
 
 	/**
+	 * Fires the value-change event.
 	 * @param {DisplayType} displayType 
 	 * @param {string | string[]} value
 	 */

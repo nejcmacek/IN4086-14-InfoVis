@@ -6,6 +6,7 @@ import EventListener from "../utils/event-listener.js"
 import { firstDayOfMonth, lastDayOfMonth } from "../utils/months.js"
 import DataManager from "./data-manager.js"
 
+/** Handles the input of the Flight Delay screen. */
 export default class FlightControl extends EventListener {
 
 	/** @param {InputControl} inputControl */
@@ -16,6 +17,7 @@ export default class FlightControl extends EventListener {
 		this.dataManager = new DataManager()
 	}
 
+	/** Initialises the component. */
 	init() {
 		/** @type {HTMLSelectElement} */
 		this.inputPlaneSelect = document.getElementById("input-plane")
@@ -24,9 +26,11 @@ export default class FlightControl extends EventListener {
 		this.inputDynamicsStatic = document.getElementById("flight-dynamics-static")
 		this.inputDynamicsDynamic = document.getElementById("flight-dynamics-dynamic")
 
+		// create the trackbar
 		this.trackbar = new Trackbar(this.elementTrackbar, { playDelay: fds.flightHistoryPlayDelay })
 		this.trackbar.addEventListener(() => this.onChangeTrackbar())
 
+		// attach even listeners
 		this.inputControl.addEventListener("display-change", this.onChangeDisplay.bind(this))
 		this.inputControl.addEventListener("value-change", this.onChangeValue.bind(this))
 
@@ -40,6 +44,7 @@ export default class FlightControl extends EventListener {
 		}
 		this.inputPlaneSelect.value = ""
 
+		// attach more event listeners
 		this.inputPlaneSelect.addEventListener("change", e => this.onChangePlane(e.target.value))
 		this.inputDynamicsStatic.addEventListener("change", () => this.onChangeDynamics())
 		this.inputDynamicsDynamic.addEventListener("change", () => this.onChangeDynamics())
@@ -64,14 +69,17 @@ export default class FlightControl extends EventListener {
 		this.loading = false
 	}
 
+	/** Checks if all the input fields are initialised. */
 	isInited() {
 		return this.inputControl.isInitialised() && !!this.start && !!this.end && !!this.tailNum
 	}
 
+	/** Check is all the input fields are initialised and some flights are available on the selected dates. */
 	hasContent() {
 		return this.isInited() && this.flights.length > 0
 	}
 
+	/** Called when the dynamics setting changes. */
 	onChangeDynamics() {
 		if (this.inputDynamicsStatic.checked) {
 			this.elementTrackbarHolder.classList.add("hidden")
@@ -85,18 +93,24 @@ export default class FlightControl extends EventListener {
 		this.updateDisplay()
 	}
 
+	/** Fired when the selected plane changes. */
 	onChangePlane(tailNum) {
 		this.tailNum = tailNum || null
 		this.updateDisplay()
 	}
 
-	/** @param {DisplayChangeArgs} e */
+	/**
+	 * Fired when the display settings change (time unit or time frame). 
+	 * @param {DisplayChangeArgs} e 
+	 */
 	onChangeDisplay(e) {
 		this.trackbar.setPlaying(false)
 		this.updateDisplay()
 	}
 
-	/** @param {ValueChangeArgs} status */
+	/** Called when trackbar progress changes. Updates the screen UI accordingly.
+	 * @param {ValueChangeArgs} status 
+	 */
 	onChangeValue(status) {
 		const value = status.value
 		if (!value)
@@ -126,7 +140,10 @@ export default class FlightControl extends EventListener {
 		this.updateDisplay()
 	}
 
-	/** @returns {PlaneDrawData} */
+	/** 
+	 * Prepares data that will be used for rendering the plane flight paths.
+	 * @returns {PlaneDrawData} 
+	 */
 	createPlaneDrawData() {
 		if (this.dynamics === "static")
 			throw new Error("Invalid Display Type.")
@@ -146,11 +163,13 @@ export default class FlightControl extends EventListener {
 		}
 	}
 
+	/** Fired when the trackbar settings change. */
 	onChangeTrackbar() {
 		this.drawData = this.createPlaneDrawData()
 		this.emit("flight-change", this.drawData)
 	}
 
+	/** Updates the screen given. Display "loading" if loading, otherwise updates the trackbar and displayed labels. */
 	async updateDisplay() {
 		this.trackbar.setPlaying(false)
 

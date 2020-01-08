@@ -4,6 +4,7 @@ import InputControl from "../ui/input-control.js"
 import FlightControl from "./flight-control.js"
 import FlightRenderer from "./renderer.js"
 
+/** Wires together the mains aspects of the Flight Delay screen. */
 export default class DisplayFlight {
 
 	/** @param {InputControl} inputControl */
@@ -11,6 +12,7 @@ export default class DisplayFlight {
 		this.inputControl = inputControl
 	}
 
+	/** Initialises the component. */
 	async init() {
 
 		/** @type {HTMLCanvasElement} */
@@ -40,6 +42,7 @@ export default class DisplayFlight {
 		this.flightControl.addEventListener("flight-change", this.onFlightChange.bind(this))
 	}
 
+	/** Handles window resize */
 	onResize() {
 		if (!this.flightControl.isInited())
 			return
@@ -51,13 +54,15 @@ export default class DisplayFlight {
 		}
 	}
 
+	/** Fired when data starts loading. */
 	onLoading() {
 		this.infoPanelAircraft.innerText = "(loading...)"
 		this.infoPanelAirline.innerText = "(loading...)"
 		this.infoPanelPassengers.innerText = "(loading...)"
 		this.labelLoading.classList.remove("hidden")
-		// stop all rendering
 	}
+
+	/** Called when input settings changes. Updates the screen accordingly. */
 	onDisplayUpdated() {
 		this.labelLoading.classList.add("hidden")
 
@@ -92,7 +97,9 @@ export default class DisplayFlight {
 
 	}
 
-	/** @param {PlaneDrawData} drawData */
+	/** Called when the selected plane changes.
+	 * @param {PlaneDrawData} drawData 
+	 */
 	onFlightChange(drawData) {
 		this.renderer.renderDynamic(drawData, false, this.flightControl.flights.length)
 		this.infoPanelDelay.innerText = drawData.current.arrivalDelay + " min"

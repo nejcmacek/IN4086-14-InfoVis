@@ -1,10 +1,17 @@
+/** 
+ * This file contains logic for switching between Airport Delay screen and the Flight Delay screen.
+ * It finds all elements that need to be displayed/hidden and updates their visibility when required.
+ */
+
 import * as adaptiveSize from "./adaptive-size.js"
+
 
 const inputSelect = document.getElementById("input-display-type")
 let display
 let displayAirports
 let displayFlight
 
+/** Shows the Airport Delay screen. */
 export function showDisplayAirports() {
 	display = "airports"
 	for (const elt of document.getElementsByClassName("display-airports"))
@@ -13,6 +20,7 @@ export function showDisplayAirports() {
 		elt.classList.add("hidden-display-panel")
 }
 
+/** Shows the Flight Delay screen. */
 export function showDisplayFlight() {
 	display = "flight"
 	for (const elt of document.getElementsByClassName("display-flight"))
@@ -21,6 +29,7 @@ export function showDisplayFlight() {
 		elt.classList.add("hidden-display-panel")
 }
 
+/** Handles the change of screens. */
 function onInputSelectChange() {
 	if (inputSelect.value === "airports") {
 		showDisplayAirports()
@@ -35,6 +44,7 @@ function onInputSelectChange() {
 	adaptiveSize.rescale()
 }
 
+/** Initialises the component. */
 export function init(da, df) {
 	displayAirports = da
 	displayFlight = df

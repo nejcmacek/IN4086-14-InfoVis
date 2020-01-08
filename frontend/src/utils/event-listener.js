@@ -1,3 +1,4 @@
+/** This class implements emitting of events and registering event listeners. */
 export default class EventListener {
 
 	constructor() {

@@ -1,4 +1,9 @@
 /**
+ * This file offers many miscellaneous heleper functions.
+ */
+
+/**
+ * Opens a new tab (window) with the airport delay plots.
  * @param {string} airport Airport code
  * @param {string} time Date or month
  */
@@ -6,13 +11,16 @@ export function showAirportDelayPlot(airport, start, end) {
 	return window.open(`plot/index.html?airport=${airport}&start=${start}&end=${end}`)
 }
 
-/** @param {HTMLElement} element */
+/** Empties an HTML element.
+ * @param {HTMLElement} element 
+ */
 export function emptyElement(element) {
 	while (element.firstChild)
 		element.firstChild.remove()
 }
 
 /**
+ * Filters an array of unique values. Usage: [].filter(filterUnique)
  * @template T
  * @param {T} value
  * @param {number} index
@@ -23,6 +31,7 @@ export function filterUnique(value, index, array) {
 }
 
 /**
+ * Reduces an array to its sum.
  * @template T
  * @param {T} previous
  * @param {T} next
@@ -32,6 +41,7 @@ export function reduceSum(previous, next) {
 }
 
 /**
+ * Reduces an array to its average numerical value.
  * @template T
  * @param {T} previous
  * @param {T} next
@@ -48,12 +58,19 @@ export function reduceAverage(previous, next, index, array) {
 	}
 }
 
+/** Creates a promise that resolves after a specified time. */
 export const waitTimeout = num => new Promise(resolve => setTimeout(resolve, num))
 
-/** @returns {Promise<number>} */
+/** 
+ * Creates a promise that resolves when the next frame is rendered.
+ * @returns {Promise<number>} 
+ */
 export const waitAnimationFrame = () => new Promise(requestAnimationFrame)
 
-/** @returns {Promise<AnimationFrameDetails>} */
+/** 
+ * Creates a promise that resolves when the next frame is rendered. Some extra details are provided.
+ * @returns {Promise<AnimationFrameDetails>} 
+ */
 export const waitAnimationFrameDetailed = () => {
 	const start = performance.now()
 	return new Promise(resolve =>
@@ -69,11 +86,19 @@ export const waitAnimationFrameDetailed = () => {
 	)
 }
 
+/**
+ * Creates a generator that yields promises which resolve 
+ * when the next animation frame is to be rendered.
+ */
 export async function* animationFrameLoop() {
 	for (; ;)
 		yield await new Promise(requestAnimationFrame)
 }
 
+/**
+ * Creates a generator that yields promises which resolve when the next animation frame
+ * is to be rendered. Additional information is provided and the generator can be cancelled.
+ */
 export function animationFrameLoopDetailed() {
 	let id = NaN
 	let reject = null

@@ -1,5 +1,8 @@
 import { trackbarSettings } from "../settings.js"
 
+/** 
+ * This components represents and renders a trackbar and handles it.
+ */
 export default class Trackbar {
 
 	/** @param {HTMLElement} trackbar */
@@ -73,7 +76,9 @@ export default class Trackbar {
 		this.setOptions(options)
 	}
 
-	/** @param {TrackbarOptions} [options] */
+	/** Sets display options.
+	 * @param {TrackbarOptions} [options] 
+	 */
 	setOptions(options) {
 		this.setPlaying(false)
 
@@ -142,6 +147,7 @@ export default class Trackbar {
 			this.listeners.splice(i, 1)
 	}
 
+	/** Fired when the value of the trackbar changes. Emits the event. */
 	onChange() {
 		const arg = {
 			value: this.value,
@@ -153,14 +159,17 @@ export default class Trackbar {
 			listener.call(this, arg)
 	}
 
+	/** Checks if the given number of steps is valid. */
 	isValidStepsNumber(num) {
 		return isFinite(num) && num > 0
 	}
 
+	/** Checks if continuous or step-mode is enabled. */
 	hasSteps() {
 		return this.isValidStepsNumber(this.steps)
 	}
 
+	/** Gets the active item. */
 	getItem() {
 		if (this.items)
 			return this.items[this.step] || null
@@ -168,6 +177,7 @@ export default class Trackbar {
 			return null
 	}
 
+	/** Gets the active label. */
 	getLabel() {
 		if (this.labels)
 			return this.labels[this.step] || null
@@ -175,6 +185,7 @@ export default class Trackbar {
 			return null
 	}
 
+	/** Updates the UI elements. */
 	updateUIElements() {
 		this.cursor.style.left = (this.value * 100) + "%"
 		if (this.labels) {
@@ -183,6 +194,7 @@ export default class Trackbar {
 		}
 	}
 
+	/** Sets the value and updates the trackbar accordingly. */
 	setValue(value) {
 		value = Math.max(0, Math.min(1, value))
 
@@ -198,6 +210,7 @@ export default class Trackbar {
 		this.onChange()
 	}
 
+	/** Sets the current step and updates the trackbar accordingly. */
 	setStep(step) {
 		if (!this.hasSteps())
 			throw new Error("No steps defined.")
@@ -209,6 +222,7 @@ export default class Trackbar {
 		this.onChange()
 	}
 
+	/** Focuses the trackbar so that arrow keys can be used. */
 	focus() {
 		this.trackbar.focus()
 	}
@@ -272,6 +286,7 @@ export default class Trackbar {
 		this.playDelay = delay || trackbarSettings.defaultPlayDelay
 	}
 
+	/** Sets whether the trackbar is playing or not. */
 	setPlaying(value) {
 		if (value === this.playing)
 			return
@@ -289,6 +304,7 @@ export default class Trackbar {
 		}
 	}
 
+	/** Sets whether the trackbar is playing or not. Toggles it. */
 	togglePlaying() {
 		this.setPlaying(!this.playing)
 	}

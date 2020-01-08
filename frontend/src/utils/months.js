@@ -1,3 +1,9 @@
+/** 
+ * This file contains helper functions that help manage months.
+ * 
+ * The functions should be self-explanatory.
+ */
+
 export const monthValues = [
 	"may", // 2018
 	"june", // 2018

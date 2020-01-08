@@ -2,6 +2,7 @@ import airportMap from "../data/airport-map.js"
 import { getAirportDelay } from "../data/rest-api.js"
 import { airportsDisplaySettings as ads } from "../settings.js"
 
+/** Gets delay color (white to red), given a delay. */
 function getDelayColorCode(value) {
 	value = value / ads.maxAirportDelay
 	value = Math.max(0, Math.min(1, value))
@@ -10,6 +11,7 @@ function getDelayColorCode(value) {
 	return `#ff${code}${code}`
 }
 
+/** Handles the coloring of airport delay circles on the map. */
 export default class AirportDelays {
 
 	constructor() {
@@ -25,7 +27,10 @@ export default class AirportDelays {
 		this.loadingLabel = document.getElementById("airport-loading")
 	}
 
-	/** @param {string[]} values */
+	/** 
+	 * Preloads the delays that might be used in future (is range mode is selected).
+	 * @param {string[]} values
+	 */
 	declareDisplayDomain(values) {
 		for (const date of values) {
 			if (!(date in this.delayCache)) {
@@ -47,7 +52,10 @@ export default class AirportDelays {
 		}
 	}
 
-	/** @param {string} date */
+	/**
+	 * Displays delays for the selected date or month.
+	 * @param {string} date date-string or month name
+	 */
 	displayDate(date) {
 		this.currentDate = date
 		const item = this.delayCache[date]
@@ -59,7 +67,10 @@ export default class AirportDelays {
 		}
 	}
 
-	/** @param {DelayData} data */
+	/** 
+	 * Renders the delays. Changes airport marker's colors on the map.
+	 * @param {DelayData} data
+	 */
 	displayDelay(data) {
 		this.currentDelays = data
 

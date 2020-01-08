@@ -1,9 +1,15 @@
+/**
+ * This file contains logic that handles resizing of items, which require to be of a constant
+ * aspect-ratio (canvases, images, etc.). This is especially important for resizing of the window.
+ */
+
 /** @type {Map<HTMLElement, HTMLElement[]>} */
 let holders
 const sizableTags = ["IMG", "CANVAS", "SVG"]
 const imgAspectRatio = 960 / 600
 const listeners = {}
 
+/** Finds the elements that will need updating. */
 export function findElements() {
 	holders = new Map()
 	const asHolders = document.getElementsByClassName("adaptive-size-holder")
@@ -19,6 +25,8 @@ export function findElements() {
 }
 
 /**
+ * Register listeners that are called when resizing occurs. This is to give 
+ * feedback to components about resiting, that require it.
  * @param {string} name
  * @param {(newSize: Size) => void} listener
  */
@@ -26,6 +34,7 @@ export function registerListener(name, listener) {
 	listeners[name] = listener
 }
 
+/** Computes new sizes, taking account the source map aspect ratio. */
 export function rescale() {
 	for (const [holder, elements] of holders.entries()) {
 		const heightHolder = holder.clientHeight
@@ -66,6 +75,7 @@ export function rescale() {
 	}
 }
 
+/** Initialises the component. */
 export function init() {
 	findElements()
 	window.addEventListener("resize", rescale)

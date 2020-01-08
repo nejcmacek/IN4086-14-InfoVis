@@ -1,3 +1,10 @@
+/** 
+ * This file contains helper functions that help manage date-strings.
+ * All dates are internally represented by YYYY-MM-DD strings.
+ * 
+ * The functions should be self-explanatory.
+ */
+
 export const firstDate = "2018-05-01"
 export const lastDate = "2019-04-30"
 export const allDates = getDatesInBetween(firstDate, lastDate)

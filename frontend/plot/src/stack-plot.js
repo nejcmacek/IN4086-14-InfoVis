@@ -1,36 +1,44 @@
 /**
- * Renders a line plot.
+ * Renders the "Delay Cause" stack plot.
  * @param {HTMLElement} holder a wrapper of the SVG element
  * @param {SVGElement} svgElement the svg element the plot is to be rendered onto
  * @param {AirportDelayTypes[]} delays 
  * @param {Margins} margin
  */
 export default function makeStackPlot(holder, svgElement, delays, margin) {
+	// get available area size
 	const viewWidth = holder.clientWidth
 	const viewHeight = holder.clientHeight
 
+	// plot size
 	const width = viewWidth - margin.left - margin.right;
 	const height = viewHeight - margin.top - margin.bottom;
 
 	const size = 20
 
+	// init the SVG element
 	const svg = d3.select(svgElement)
 		.attr("width", viewWidth)
 		.attr("height", viewHeight)
 		.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+	/** Draws the stack plot */
 	function drawStackedPlot() {
 		const data = delays;
 		const keys = ["carrier_delay", "weather_delay", "nas_delay", "security_delay", "late_aircraft_delay"]
 
+		// Set the color palet
 		const color = d3.scaleOrdinal()
 			.domain(keys)
 			.range(d3.schemeSet2);
 
+		// Set the five keys (listed above)
 		const stackedData = d3.stack()
 			.keys(keys)
 			(data)
+
+		// Create the X axis
 
 		const x = d3.scalePoint()
 			.domain(data.map(a => a.time))
@@ -50,6 +58,8 @@ export default function makeStackPlot(holder, svgElement, delays, margin) {
 			.style("text-anchor", "middle")
 			.text("Delay (in minutes)");
 
+		// Create the Y axis
+
 		const y = d3.scaleLinear()
 			.domain([0, d3.max(data, function (d) { return +d.total_delay; })])
 			.range([height, 0]);
@@ -57,6 +67,8 @@ export default function makeStackPlot(holder, svgElement, delays, margin) {
 		svg.append("g")
 			.attr("class", "axis")
 			.call(d3.axisLeft(y))
+
+		// Create the plot
 
 		const clip = svg.append("defs").append("svg:clipPath")
 			.attr("id", "clip")
@@ -94,7 +106,7 @@ export default function makeStackPlot(holder, svgElement, delays, margin) {
 			.attr("height", size)
 			.style("fill", function (d) { return color(d) })
 
-		// Add one dot in the legend for each name.
+		// Add one dot in the legend for each name
 		svg.selectAll("mylabels")
 			.data(keys)
 			.enter()
@@ -108,5 +120,5 @@ export default function makeStackPlot(holder, svgElement, delays, margin) {
 			.style("alignment-baseline", "middle")
 	}
 
-	drawStackedPlot();
+	drawStackedPlot(); // draw
 }

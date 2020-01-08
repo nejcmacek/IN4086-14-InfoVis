@@ -1,26 +1,31 @@
 /**
- * Renders a line plot.
+ * Renders the "Delay Type" line plot.
  * @param {HTMLElement} holder a wrapper of the SVG element
  * @param {SVGElement} svgElement the svg element the plot is to be rendered onto
  * @param {AirportDelayTypes[]} delays 
  * @param {Margins} margin
  */
 export default function makeLinePlot(holder, svgElement, delays, margin) {
+	// get available area size
 	const viewWidth = holder.clientWidth;
 	const viewHeight = holder.clientHeight;
 
+	// plot size
 	const width = viewWidth - margin.left - margin.right;
 	const height = viewHeight - margin.top - margin.bottom;
 
+	// init the SVG element
 	const svg = d3.select(svgElement)
 		.attr("width", viewWidth)
 		.attr("height", viewHeight)
 		.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-	window.dlp = drawLinePlot
+	/** Draws the line plot */
 	function drawLinePlot() {
 		const data = delays;
+
+		// Create the axes
 
 		const x = d3.scalePoint()
 			.domain(data.map(a => a.time))
@@ -38,6 +43,9 @@ export default function makeLinePlot(holder, svgElement, delays, margin) {
 			.attr("class", "axis")
 			.call(d3.axisLeft(y));
 
+		// create the lines
+
+		// -> arrival delay
 		svg.append("path")
 			.datum(data)
 			.attr("fill", "none")
@@ -49,6 +57,7 @@ export default function makeLinePlot(holder, svgElement, delays, margin) {
 				.y(function (d) { return y(d.arrival_delay) })
 			)
 
+		// -> departure delay
 		svg.append("path")
 			.datum(data)
 			.attr("fill", "none")
@@ -60,6 +69,7 @@ export default function makeLinePlot(holder, svgElement, delays, margin) {
 				.y(function (d) { return y(d.departure_delay) })
 			)
 
+		// -> total delay
 		svg.append("path")
 			.datum(data)
 			.attr("fill", "none")
@@ -71,6 +81,9 @@ export default function makeLinePlot(holder, svgElement, delays, margin) {
 				.y(function (d) { return y(d.total_delay) })
 			)
 
+		// Create labels
+
+		// -> Y axis label
 		svg.append("text")
 			.attr("transform", "rotate(-90)")
 			.attr("y", 0 - margin.left)
@@ -80,6 +93,7 @@ export default function makeLinePlot(holder, svgElement, delays, margin) {
 			.style("text-anchor", "middle")
 			.text("Delay (in minutes)");
 
+		// -> arrival delay
 		svg.append("text")
 			.attr("transform", "translate(" + (width + 16) + "," + y(data[data.length - 1].arrival_delay) + ")")
 			.attr("dy", ".35em")
@@ -88,6 +102,7 @@ export default function makeLinePlot(holder, svgElement, delays, margin) {
 			.attr("class", "legend-item")
 			.text("Arrival delay");
 
+		// -> departure delay
 		svg.append("text")
 			.attr("transform", "translate(" + (width + 16) + "," + y(data[data.length - 1].departure_delay) + ")")
 			.attr("dy", ".35em")
@@ -96,6 +111,7 @@ export default function makeLinePlot(holder, svgElement, delays, margin) {
 			.attr("class", "legend-item")
 			.text("Departure delay");
 
+		// -> total delay
 		svg.append("text")
 			.attr("transform", "translate(" + (width + 16) + "," + y(data[data.length - 1].total_delay) + ")")
 			.attr("dy", ".35em")
@@ -105,5 +121,5 @@ export default function makeLinePlot(holder, svgElement, delays, margin) {
 			.text("Total delay");
 	}
 
-	drawLinePlot();
+	drawLinePlot(); // draw
 }

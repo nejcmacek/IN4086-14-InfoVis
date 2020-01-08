@@ -1,3 +1,4 @@
+/** This is a list of all airlines. */
 export default {
 	"02Q": "Titan Airways",
 	"04Q": "Tradewind Aviation",

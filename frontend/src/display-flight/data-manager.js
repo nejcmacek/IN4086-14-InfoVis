@@ -4,6 +4,10 @@ import { getFlightHistory } from "../data/rest-api.js"
 import { allDates } from "../utils/date-string.js"
 
 /**
+ * When flight data is received, we need to process it to perform some validation, 
+ * organise the data in a convenient way etc. The given data is listed in several separate arrays,
+ * but we want to bundle this data together.
+ * 
  * @param {FlightHistory} fh
  * @returns {PlaneData}
  */
@@ -48,6 +52,7 @@ function processFlightHistory(fh) {
 	}
 }
 
+/** This class manages the loading and pre-processing of flight data. */
 export default class DataManager {
 
 	constructor() {
@@ -55,10 +60,12 @@ export default class DataManager {
 		this.flightData = {} // cache storage
 	}
 
+	/** Check if the data is actually loaded already. */
 	isLoaded(tailNum) {
 		return (tailNum in this.flightData) && (!this.flightData[tailNum].loading)
 	}
 
+	/** Gets the already-loaded data. Should not be called if isLoaded(tailNum) returns false. */
 	getLoadedFlightData(tailNum) {
 		if (!tailNum)
 			return null
@@ -70,6 +77,7 @@ export default class DataManager {
 		return cacheItem.data
 	}
 
+	/** Loads plane history data (if not already). */
 	async loadFlightData(tailNum) {
 		if (!tailNum)
 			return null

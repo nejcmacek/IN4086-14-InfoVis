@@ -2,6 +2,7 @@ import airportMap from "../data/airport-map.js"
 import { flightDisplaySettings as fds, flightDisplaySettings } from "../settings.js"
 import { animationFrameLoopDetailed, filterUnique, reduceAverage } from "../utils/misc.js"
 
+/** Gets the color (blue to white tot red) based on the given delay value. */
 function getDelayColor(delay) {
 	const mfd = flightDisplaySettings.maxFlightDelay
 	delay = Math.max(-mfd, Math.min(mfd, delay)) / mfd
@@ -14,6 +15,7 @@ function getDelayColor(delay) {
 	}
 }
 
+/** Gets RGB values of the color (blue to white tot red) based on the given delay value. */
 function getDelayColorRGB(delay) {
 	const mfd = flightDisplaySettings.maxFlightDelay
 	delay = Math.max(-mfd, Math.min(mfd, delay)) / mfd
@@ -26,6 +28,7 @@ function getDelayColorRGB(delay) {
 	}
 }
 
+/** This component handles the rendering of all the flight paths. A canvas and its 2D context is used for rendering. */
 export default class FlightRenderer {
 
 	/** @param {HTMLCanvasElement} canvas */
@@ -47,16 +50,21 @@ export default class FlightRenderer {
 		this.image.src = "./media/plane.svg"
 	}
 
+	/** Stops all rendering. */
 	stopRendering() {
 		if (this.animationLoop)
 			this.animationLoop.cancel()
 	}
 
+	/** Clears the canvas to transparent background. */
 	clearCanvas() {
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 	}
 
-	/** @param {Airport[] | Set<Airport>} airports */
+	/** 
+	 * Renders airport dots on the map
+	 * @param {Airport[] | Set<Airport>} airports list of airports to render
+	 */
 	renderAirports(airports, allowFade = true) {
 		this.ctx.fillStyle = fds.airportDefaultFillStyle
 		for (const airport of airports) {
@@ -72,6 +80,7 @@ export default class FlightRenderer {
 		}
 	}
 
+	/** Renders a flight - draws a line on the canvas. */
 	renderFlight(origin, destination) {
 		this.ctx.beginPath()
 		this.ctx.moveTo(origin.lat * this.canvas.width, origin.long * this.canvas.height)
@@ -79,13 +88,18 @@ export default class FlightRenderer {
 		this.ctx.stroke()
 	}
 
-	/** @param {Flight[]} flights */
+	/** 
+	 * Renders static flight data.
+	 * @param {Flight[]} flights
+	 */
 	renderStatic(flights) {
 		this.stopRendering()
 
 		const map = {}
 		const airports = new Set()
 
+		// Create a list of routes (from one airport to another) and calculate
+		// their average delays
 		for (const flight of flights) {
 			const org = flight.origin.code
 			const dest = flight.destination.code
@@ -101,16 +115,20 @@ export default class FlightRenderer {
 			airports.add(flight.destination)
 		}
 
+		// Draw the calculated routes
 		this.clearCanvas()
 		this.ctx.globalAlpha = 1
 		this.ctx.globalCompositeOperation = "normal"
 		this.ctx.lineWidth = fds.flightLineNormalWidth
+
+		// For each route...
 		for (const [codes, values] of Object.entries(map)) {
 			const [a, b] = codes.split("-").map(code => airportMap[code])
 			const delay = values.reduce(reduceAverage)
 
 			this.ctx.strokeStyle = getDelayColor(delay)
 			if (this.selectedAirport) { // set focus to the selected airport
+				// Update the opacity and composite operation style
 				if (a.code === this.selectedAirport || b.code === this.selectedAirport) {
 					this.ctx.globalAlpha = 1
 					this.ctx.globalCompositeOperation = "source-over"
@@ -119,16 +137,20 @@ export default class FlightRenderer {
 					this.ctx.globalCompositeOperation = "destination-over"
 				}
 			}
+			// daw the line
 			this.renderFlight(a, b)
 		}
 
+		// Eender the airports over all teh data
 		this.ctx.globalAlpha = 1
 		this.ctx.globalCompositeOperation = "normal"
 		this.renderAirports(airports)
 	}
 
 	/**
-	 * @param {PlaneDrawData} drawData
+	 * Renders dynamic flight data. This method does not perform actually rendering, but handles the rendering 
+	 * and animation logic behind it.
+	 * @param {PlaneDrawData} drawData the data to draw
 	 * @param {boolean} retainProgress forces a re-render without loosing progress of the current animation
 	 * @param {number} maxFlightHistorySize
 	 */
@@ -177,6 +199,7 @@ export default class FlightRenderer {
 	}
 
 	/** 
+	 * This method actually performs the rendering of flights, when dynamic mode is selected.
 	 * @param {PlaneDrawData} drawData 
 	 * @param {Airport[]} airports
 	 * @param {number} progress
@@ -209,7 +232,9 @@ export default class FlightRenderer {
 		this.renderFlightCurrentProgress(drawData.current, progress)
 	}
 
-	/** @param {Flight} flight */
+	/** 
+	 * This renders the current flight when rendering mode is set to dynamics. It also render the plane icon.
+	 * @param {Flight} flight */
 	renderFlightCurrentProgress(flight, progress) {
 		const { ctx, canvas: { height, width }, image } = this
 		const ox = flight.origin.lat * width
@@ -244,7 +269,7 @@ export default class FlightRenderer {
 			ctx.restore()
 		}
 
-		this.stopRendering()
+		this.stopRendering() // all animations are done at this point
 	}
 
 }

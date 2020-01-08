@@ -5,10 +5,18 @@ import EventListener from "../utils/event-listener.js"
 import { countMonthsInBetween, getMonthsDisplayStringsInBetween, getMonthsInBetween } from "../utils/months.js"
 import AirportDelays from "./airport-delays.js"
 
-const hiddenClass = "hidden"
+const hiddenClass = "hidden" // name of the CSS class that hides elements
 
+/**
+ * Airport control wires together the logic for handling the Airport Delay screen.
+ */
 export default class AirportControl extends EventListener {
 
+	/**
+	 * Creates a new instance.
+	 * @param {InputControl} inputControl 
+	 * @param {AirportDelays} airportDelays 
+	 */
 	constructor(inputControl, airportDelays) {
 		super()
 		/** @type {AirportDelays} */
@@ -17,6 +25,7 @@ export default class AirportControl extends EventListener {
 		this.inputControl = inputControl
 	}
 
+	/** Initialises the component. */
 	init() {
 		// retrieve element references
 		this.elementMonthRangeTrackbar = document.getElementById("airport-month-range-trackbar")
@@ -40,10 +49,12 @@ export default class AirportControl extends EventListener {
 		this.enabled = false
 	}
 
+	/** Called when the screen gets disabled. */
 	disable() {
 		this.enabled = false
 	}
 
+	/** Called when the screen ets enabled. */
 	enable() {
 		this.enabled = true
 		const status = this.inputControl.getCurrentStatus()
@@ -62,7 +73,10 @@ export default class AirportControl extends EventListener {
 		this.updateDisplay(status)
 	}
 
-	/** @param {ValueChangeArgs} status */
+	/**
+	 * Updates the screen when the user chooses a different display options. 
+	 * @param {ValueChangeArgs} status
+	 */
 	updateDisplay(status) {
 		const value = status.value
 		if (!value)
@@ -86,7 +100,10 @@ export default class AirportControl extends EventListener {
 		}
 	}
 
-	/** @param {string[] | null} value */
+	/**
+	 * Updates the month trackbar, when monthly input changes.
+	 *  @param {string[] | null} value
+	 */
 	updateMonthTrackbar(value) {
 		if (!value)
 			return
@@ -100,12 +117,16 @@ export default class AirportControl extends EventListener {
 		this.elementMonthRangeTrackbar.classList.remove("hidden")
 	}
 
+	/** Updates the displayed monthly delays, when the trackbar progress changes. */
 	onChangeMonthTrackbar() {
 		const item = this.trackbarMonthRange.getItem()
 		this.displayMonth(item)
 	}
 
-	/** @param {string[] | null} value */
+	/** 
+	 * Updates the displayed daily delays, when the trackbar progress changes.
+	 * @param {string[] | null} value 
+	 */
 	updateDayTrackbar(value) {
 		if (!value)
 			return
@@ -127,14 +148,20 @@ export default class AirportControl extends EventListener {
 		this.displayDay(item)
 	}
 
+	/**
+	 * When range mode is selected, this method is called to preload delays
+	 * of all airports for every time unit of the selected range.
+	 */
 	declareDisplayDomain(values) {
 		this.airportDelays.declareDisplayDomain(values)
 	}
 
+	/** Forces the delay renderer to display delays for the given month. */
 	displayMonth(value) {
 		this.airportDelays.displayDate(value)
 	}
 
+	/** Forces the delay renderer to display delays for the given day. */
 	displayDay(value) {
 		this.airportDelays.displayDate(value)
 	}

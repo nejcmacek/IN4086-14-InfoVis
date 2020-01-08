@@ -5,6 +5,7 @@ import { showAirportDelayPlot } from "../utils/misc.js"
 import AirportControl from "./airport-control.js"
 import AirportDelays from "./airport-delays.js"
 
+/** Gets airport display name. */
 function getAirportName(airport) {
 	const splitterIndex = airport.name.indexOf("|")
 	const fullName = splitterIndex < 0
@@ -14,6 +15,7 @@ function getAirportName(airport) {
 	return name
 }
 
+/** Manages the input controls and tracks closes/focused airport. */
 export default class DisplayAirports {
 
 	/** @param {InputControl} inputControl */
@@ -70,7 +72,10 @@ export default class DisplayAirports {
 		this.airportDelays.addEventListener(() => this.onCurrentDelayChange())
 	}
 
-	/** @param {MouseEvent} e */
+	/** 
+	 * Opens the Plot screen, which shows the two plots. (When the user click the "Airport Delay Breakdown" link.)
+	 * @param {MouseEvent} e
+	 */
 	onClickLink(e) {
 		e.preventDefault()
 
@@ -92,7 +97,10 @@ export default class DisplayAirports {
 		return { x, y }
 	}
 
-	/** @param {MouseEvent} e */
+	/**
+	 * Updates which airport is in focus, when the user clicks on the map.
+	 * @param {MouseEvent} e
+	 */
 	onClick() {
 		let hide = false
 
@@ -109,7 +117,10 @@ export default class DisplayAirports {
 		this.setFocusedAirport(hide ? null : this.closestAirport)
 	}
 
-	/** @param {MouseEvent} e */
+	/** 
+	 * Updates which airport is the closest to the cursor.
+	 * @param {MouseEvent} e 
+	 */
 	onMouseMove(e) {
 		const mapBounds = this.map.getBoundingClientRect()
 		const { x, y } = this.getMouseEventMapCoords(e, mapBounds)
@@ -126,6 +137,7 @@ export default class DisplayAirports {
 		this.setClosestAirport(closest.airport)
 	}
 
+	/** Sets the variable indicating the closes airport. */
 	setClosestAirport(closest) {
 		if (closest === this.closestAirport)
 			return
@@ -141,6 +153,7 @@ export default class DisplayAirports {
 			this.updateAirportDetails()
 	}
 
+	/** Sets the variable indicating the focused airport. */
 	setFocusedAirport(focused) {
 		if (focused === this.focusedAirport)
 			return
@@ -154,6 +167,7 @@ export default class DisplayAirports {
 		this.updateAirportDetails()
 	}
 
+	/** Updates the info panel indicating airport details. */
 	updateAirportDetails() {
 		const airport = this.getDisplayedAirport()
 		if (airport) {
@@ -178,6 +192,7 @@ export default class DisplayAirports {
 			this.infoPanelDelay.innerText = ""
 	}
 
+	/** Checks if the Plot website link should be visible. */
 	isPlotLinkEnabled() {
 		return !!this.getDisplayedAirport()
 			&& this.inputControl.isInitialised()
@@ -201,7 +216,11 @@ export default class DisplayAirports {
 			this.plotHolder.classList.add("invisible")
 	}
 
-	/** @return {Airport | null} */
+	/** 
+	 * Gets the closes or the selected airport, whichever is relevant and
+	 * should eb displayed in the info panel. Or none.
+	 * @return {Airport | null} 
+	 */
 	getDisplayedAirport() {
 		return this.focusedAirport || this.closestAirport || null
 	}
