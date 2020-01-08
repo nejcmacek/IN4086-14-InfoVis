@@ -84,7 +84,7 @@ Each of the project directories in the `airports` directory contains their own `
 
 ## Points of Interest
 
-Since the codebase is quite big (6073 lines of code within 58 files), we list some points of interest, mostly in frontend since it is the bigger part.
+Since the codebase is quite big (6698 lines of code within 68 files), we list some points of interest, mostly in frontend since it is the bigger part.
 
 | File                                               | Description                                                                      |
 | -------------------------------------------------- | -------------------------------------------------------------------------------- |
